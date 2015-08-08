@@ -1,6 +1,7 @@
 <?php namespace Apishka\Validator\Assert;
 
 use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\Exception;
 
 /**
  * Float
@@ -40,7 +41,7 @@ class Float extends AssertAbstract
             return null;
 
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($options['message'] ?: $this->getMessage());
+            throw new Exception($this->getErrorMessage($options, 'error'));
 
         $patterns = array(
             '#^[+-]?[0-9]+$#',
@@ -59,19 +60,21 @@ class Float extends AssertAbstract
         }
 
         if (!$is_float)
-            throw new Exception($options['message'] ?: $this->getMessage());
+            throw new Exception($this->getErrorMessage($options, 'error'));
 
         return (float) $value;
     }
 
     /**
-     * Get message
+     * Get default error messages
      *
-     * @return string
+     * @return array
      */
 
-    protected function getMessage()
+    protected function getDefaultErrorMessages()
     {
-        return 'is not float';
+        return array(
+            'error' => 'is not float',
+        );
     }
 }

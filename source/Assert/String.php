@@ -40,19 +40,21 @@ class String extends AssertAbstract
             return null;
 
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($options['message'] ?: $this->getMessage());
+            throw new Exception($this->getErrorMessage($options, 'error'));
 
         return (string) $value;
     }
 
     /**
-     * Get message
+     * Get default error messages
      *
-     * @return string
+     * @return array
      */
 
-    public function getMessage()
+    protected function getDefaultErrorMessages()
     {
-        return 'is not string';
+        return array(
+            'error' => 'is not string',
+        );
     }
 }

@@ -1,6 +1,7 @@
 <?php namespace Apishka\Validator\Assert;
 
 use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\Exception;
 
 /**
  * Int
@@ -41,22 +42,24 @@ class Int extends AssertAbstract
             return null;
 
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($options['message'] ?: $this->getMessage());
+            throw new Exception($this->getErrorMessage($options, 'error'));
 
         if (strcmp($value, (int) $value) != 0)
-            throw new Exception($options['message'] ?: $this->getMessage());
+            throw new Exception($this->getErrorMessage($options, 'error'));
 
         return (int) $value;
     }
 
     /**
-     * Get message
+     * Get default error messages
      *
-     * @return string
+     * @return array
      */
 
-    protected function getMessage()
+    protected function getDefaultErrorMessages()
     {
-        return 'is not integer';
+        return array(
+            'error' => 'is not integer',
+        );
     }
 }

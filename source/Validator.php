@@ -1,5 +1,7 @@
 <?php namespace Apishka\Validator;
 
+use Apishka\Validator\Router;
+
 /**
  * Validator
  *
@@ -25,16 +27,15 @@ class Validator
 
     public function validate($value, $validations)
     {
-    }
+        foreach ($validations as $validation => $options)
+        {
+            if (is_int($validation))
+            {
+                $validation = $options;
+                $options    = array();
+            }
 
-    /**
-     * Sanitize
-     *
-     * @param mixed $value
-     * @param mixed $validations
-     */
-
-    public function sanitize($value, $validations)
-    {
+            Router::apishka()->getItem($validation)->process($value);
+        }
     }
 }

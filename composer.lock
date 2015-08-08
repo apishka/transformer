@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c89fc737c1b04edaf87485f40c20ca9e",
+    "hash": "f6b3e67e32470b3b61e96602828dc12f",
     "packages": [
         {
             "name": "apishka/cs",
