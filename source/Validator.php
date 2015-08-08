@@ -35,7 +35,7 @@ class Validator
                 $options    = array();
             }
 
-            Router::apishka()->getItem($validation)->process($value);
+            Router::apishka()->getItem($validation)->process($value, $options);
         }
     }
 }
