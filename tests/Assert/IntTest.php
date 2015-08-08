@@ -69,4 +69,43 @@ class IntTest extends \PHPUnit_Framework_TestCase
     {
         $this->prepareAssert()->process(new \StdClass());
     }
+
+    /**
+     * Test object
+     *
+     * @expectedException        \Apishka\Validator\Exception
+     * @expectedExceptionMessage is not integer
+     */
+
+    public function testArray()
+    {
+        $this->prepareAssert()->process(array(1));
+    }
+
+    /**
+     * Test negative string
+     */
+
+    public function testNegativeString()
+    {
+        $this->assertSame(
+            -10,
+            $this->prepareAssert()->process('-10')
+        );
+    }
+
+    /**
+     * Test bad string
+     *
+     * @expectedException        \Apishka\Validator\Exception
+     * @expectedExceptionMessage is not integer
+     */
+
+    public function testBadString()
+    {
+        $this->assertSame(
+            -10,
+            $this->prepareAssert()->process('123abc')
+        );
+    }
 }
