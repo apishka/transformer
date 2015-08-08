@@ -22,7 +22,7 @@ class Callback extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/NotNull',
+            'Assert/Callback',
         );
     }
 
