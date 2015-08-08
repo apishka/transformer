@@ -3,7 +3,7 @@
 use Apishka\Validator\Assert\Int;
 
 /**
- * By class name test
+ * Integer assert test
  *
  * @uses \PHPUnit_Framework_TestCase
  *
