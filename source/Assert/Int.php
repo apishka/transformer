@@ -32,17 +32,31 @@ class Int extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return int
+     * @return int|null
      */
 
     public function process($value, array $options = array())
     {
+        if ($value === null)
+            return null;
+
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($options['message'] ?: 'is not integer');
+            throw new Exception($options['message'] ?: $this->getMessage());
 
         if (strcmp($value, (int) $value) != 0)
-            throw new Exception($options['message'] ?: 'is not integer');
+            throw new Exception($options['message'] ?: $this->getMessage());
 
         return (int) $value;
+    }
+
+    /**
+     * Get message
+     *
+     * @return string
+     */
+
+    protected function getMessage()
+    {
+        return 'is not integer';
     }
 }
