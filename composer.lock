@@ -4,9 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ddd03f99209d1030b8019a21751444f2",
-    "packages": [],
-    "packages-dev": [
+    "hash": "c89fc737c1b04edaf87485f40c20ca9e",
+    "packages": [
         {
             "name": "apishka/cs",
             "version": "1.0.0",
@@ -38,6 +37,170 @@
             ],
             "time": "2015-06-06 14:33:20"
         },
+        {
+            "name": "apishka/easy-extend",
+            "version": "1.2.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/apishka/easy-extend.git",
+                "reference": "71a5ccbdd24d00229aba720521f88f793c2ec038"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/apishka/easy-extend/zipball/71a5ccbdd24d00229aba720521f88f793c2ec038",
+                "reference": "71a5ccbdd24d00229aba720521f88f793c2ec038",
+                "shasum": ""
+            },
+            "require": {
+                "apishka/cs": "~1.0.0",
+                "composer-plugin-api": "^1.0.0",
+                "php": ">=5.6",
+                "symfony/console": "~2.7.0",
+                "symfony/finder": "~2.7.0"
+            },
+            "require-dev": {
+                "composer/composer": "dev-master@dev",
+                "phpunit/phpunit": "~4.6"
+            },
+            "bin": [
+                "bin/easy-extend"
+            ],
+            "type": "composer-plugin",
+            "extra": {
+                "class": "Apishka\\EasyExtend\\EasyExtend"
+            },
+            "autoload": {
+                "psr-4": {
+                    "Apishka\\EasyExtend\\": "source"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Evgeny Reykh",
+                    "email": "evgeny@reykh.com"
+                }
+            ],
+            "description": "Easy extends class implementation for PHP",
+            "keywords": [
+                "class",
+                "composer-plugin",
+                "extend",
+                "extending"
+            ],
+            "time": "2015-07-24 20:09:55"
+        },
+        {
+            "name": "symfony/console",
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Console.git",
+                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Console/zipball/d6cf02fe73634c96677e428f840704bfbcaec29e",
+                "reference": "d6cf02fe73634c96677e428f840704bfbcaec29e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "psr/log": "~1.0",
+                "symfony/event-dispatcher": "~2.1",
+                "symfony/phpunit-bridge": "~2.7",
+                "symfony/process": "~2.1"
+            },
+            "suggest": {
+                "psr/log": "For using the console logger",
+                "symfony/event-dispatcher": "",
+                "symfony/process": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Console\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Console Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-07-28 15:18:12"
+        },
+        {
+            "name": "symfony/finder",
+            "version": "v2.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Finder.git",
+                "reference": "ae0f363277485094edc04c9f3cbe595b183b78e4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/ae0f363277485094edc04c9f3cbe595b183b78e4",
+                "reference": "ae0f363277485094edc04c9f3cbe595b183b78e4",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "~2.7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Finder\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Finder Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-07-09 16:07:40"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "doctrine/instantiator",
             "version": "1.0.5",
