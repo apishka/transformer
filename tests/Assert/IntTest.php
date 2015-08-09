@@ -71,7 +71,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test object
+     * Test array
      *
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage is not integer
@@ -103,9 +103,6 @@ class IntTest extends \PHPUnit_Framework_TestCase
 
     public function testBadString()
     {
-        $this->assertSame(
-            -10,
-            $this->prepareAssert()->process('123abc')
-        );
+        $this->prepareAssert()->process('123abc');
     }
 }
