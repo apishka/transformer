@@ -21,7 +21,7 @@ class StringType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/StringType',
+            'Assert/String',
         );
     }
 

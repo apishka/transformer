@@ -22,7 +22,7 @@ class IntType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/IntType',
+            'Assert/Int',
         );
     }
 

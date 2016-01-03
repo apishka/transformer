@@ -22,7 +22,7 @@ class FloatType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/FloatType',
+            'Assert/Float',
         );
     }
 
