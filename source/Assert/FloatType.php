@@ -1,16 +1,17 @@
 <?php namespace Apishka\Validator\Assert;
 
 use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\Exception;
 
 /**
- * String
+ * Float type
  *
  * @uses AssertAbstract
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class String extends AssertAbstract
+class FloatType extends AssertAbstract
 {
     /**
      * Get supported names
@@ -21,7 +22,7 @@ class String extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/String',
+            'Assert/FloatType',
         );
     }
 
@@ -31,7 +32,7 @@ class String extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return string|null
+     * @return float|null
      */
 
     public function process($value, array $options = array())
@@ -42,7 +43,26 @@ class String extends AssertAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             throw new Exception($this->getErrorMessage($options, 'error'));
 
-        return (string) $value;
+        $patterns = array(
+            '#^[+-]?[0-9]+$#',
+            '#^[+-]?([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*)$#',
+            '#^[+-]?(([0-9]+|([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*))[eE][+-]?[0-9]+)$#',
+        );
+
+        $is_float = false;
+        foreach ($patterns as $pattern)
+        {
+            if (preg_match($pattern, $value))
+            {
+                $is_float = true;
+                break;
+            }
+        }
+
+        if (!$is_float)
+            throw new Exception($this->getErrorMessage($options, 'error'));
+
+        return (float) $value;
     }
 
     /**
@@ -54,7 +74,7 @@ class String extends AssertAbstract
     protected function getDefaultErrorMessages()
     {
         return array(
-            'error' => 'is not string',
+            'error' => 'is not float',
         );
     }
 }

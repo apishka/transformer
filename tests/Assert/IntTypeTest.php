@@ -1,6 +1,6 @@
 <?php namespace ApishkaTest\Validator\Assert;
 
-use Apishka\Validator\Assert\Int;
+use Apishka\Validator\Assert\IntType;
 
 /**
  * Integer assert test
@@ -10,7 +10,7 @@ use Apishka\Validator\Assert\Int;
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class IntTest extends \PHPUnit_Framework_TestCase
+class IntTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Prepare assert
@@ -20,7 +20,7 @@ class IntTest extends \PHPUnit_Framework_TestCase
 
     protected function prepareAssert()
     {
-        return new Int();
+        return new IntType();
     }
 
     /**

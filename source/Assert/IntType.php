@@ -4,14 +4,14 @@ use Apishka\Validator\AssertAbstract;
 use Apishka\Validator\Exception;
 
 /**
- * Int
+ * Int type
  *
  * @uses AssertAbstract
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class Int extends AssertAbstract
+class IntType extends AssertAbstract
 {
     /**
      * Get supported names
@@ -22,8 +22,7 @@ class Int extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Int',
-            'Assert/Integer',
+            'Assert/IntType',
         );
     }
 
