@@ -67,11 +67,11 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
             'test',
             [
                 'Assert/Callback' => [
-                    'callback' => function($value)
+                    'callback' => function ($value)
                     {
                         if ($value === 'test')
                             throw new \Exception('wrong value');
-                    }
+                    },
                 ],
             ]
         );

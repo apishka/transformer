@@ -37,7 +37,7 @@ class StringType extends AssertAbstract
     public function process($value, array $options = array())
     {
         if ($value === null)
-            return null;
+            return;
 
         if (is_object($value) || is_resource($value) || is_array($value))
             throw new Exception($this->getErrorMessage($options, 'error'));

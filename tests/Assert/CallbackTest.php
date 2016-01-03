@@ -34,11 +34,11 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             $this->prepareAssert()->process(
                 10,
                 [
-                    'callback' => function($value)
+                    'callback' => function ($value)
                     {
                         if ($value !== 10)
                             throw new \Exception();
-                    }
+                    },
                 ]
             )
         );
@@ -68,7 +68,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $this->prepareAssert()->process(
             10,
             [
-                'callback' => 10
+                'callback' => 10,
             ]
         );
     }
@@ -85,11 +85,11 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
         $this->prepareAssert()->process(
             9,
             [
-                'callback' => function($value)
+                'callback' => function ($value)
                 {
                     if ($value !== 10)
                         throw new \Exception('wrong value');
-                }
+                },
             ]
         );
     }

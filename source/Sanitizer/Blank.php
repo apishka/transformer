@@ -1,7 +1,6 @@
 <?php namespace Apishka\Validator\Sanitizer;
 
 use Apishka\Validator\SanitizerAbstract;
-use Apishka\Validator\Exception;
 
 /**
  * Blank
@@ -38,7 +37,7 @@ class Blank extends SanitizerAbstract
     public function process($value, array $options = array())
     {
         if (empty($value) && $value !== '0' && $value !== 0)
-            return null;
+            return;
 
         return $value;
     }

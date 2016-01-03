@@ -1,7 +1,7 @@
 <?php namespace Apishka\Validator\Sanitizer;
 
-use Apishka\Validator\SanitizerAbstract;
 use Apishka\Validator\Exception;
+use Apishka\Validator\SanitizerAbstract;
 
 /**
  * Trim
@@ -38,7 +38,7 @@ class Trim extends SanitizerAbstract
     public function process($value, array $options = array())
     {
         if ($value === null)
-            return null;
+            return;
 
         if (is_object($value) || is_resource($value) || is_array($value))
             throw new Exception($this->getErrorMessage($options, 'error'));

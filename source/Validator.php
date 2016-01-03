@@ -1,7 +1,5 @@
 <?php namespace Apishka\Validator;
 
-use Apishka\Validator\Router;
-
 /**
  * Validator
  *
