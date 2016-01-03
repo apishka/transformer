@@ -38,7 +38,7 @@ class NotBlank extends AssertAbstract
 
     public function process($value, array $options = array())
     {
-        if ($value === false || (empty($value) && $value != '0'))
+        if (empty($value) && $value !== '0' && $value !== 0)
             throw new Exception($this->getErrorMessage($options, 'error'));
 
         return $value;

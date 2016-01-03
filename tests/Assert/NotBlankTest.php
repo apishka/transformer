@@ -98,6 +98,18 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test string with zero
+     */
+
+    public function testStringWithZero()
+    {
+        $this->assertSame(
+            '0',
+            $this->prepareAssert()->process('0')
+        );
+    }
+
+    /**
      * Test false
      *
      * @expectedException        \Apishka\Validator\Exception

@@ -85,7 +85,8 @@ class BlankTest extends \PHPUnit_Framework_TestCase
 
     public function testStringWithZero()
     {
-        $this->assertNull(
+        $this->assertEquals(
+            '0',
             $this->prepareSanitizer()->process('0')
         );
     }
@@ -96,7 +97,8 @@ class BlankTest extends \PHPUnit_Framework_TestCase
 
     public function testZero()
     {
-        $this->assertNull(
+        $this->assertEquals(
+            0,
             $this->prepareSanitizer()->process(0)
         );
     }
