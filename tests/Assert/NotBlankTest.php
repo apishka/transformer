@@ -65,11 +65,11 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
 
     public function testObject()
     {
-        $stdClass = new \StdClass();
+        $std_class = new \StdClass();
 
         $this->assertSame(
-            $stdClass,
-            $this->prepareAssert()->process($stdClass)
+            $std_class,
+            $this->prepareAssert()->process($std_class)
         );
     }
 
