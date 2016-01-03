@@ -18,9 +18,9 @@ class Validator
      * Validate
      *
      * @param mixed $value
-     * @param mixed $validations
+     * @param array $validations
      *
-     * @return value
+     * @return mixed
      */
 
     public function validate($value, $validations)
@@ -33,7 +33,9 @@ class Validator
                 $options    = array();
             }
 
-            Router::apishka()->getItem($validation)->process($value, $options);
+            $value = Router::apishka()->getItem($validation)->process($value, $options);
         }
+
+        return $value;
     }
 }
