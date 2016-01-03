@@ -23,7 +23,6 @@ class NotBlank extends AssertAbstract
     {
         return array(
             'Assert/NotBlank',
-            'Assert/NotEmpty',
         );
     }
 
