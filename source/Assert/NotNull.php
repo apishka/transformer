@@ -1,7 +1,6 @@
 <?php namespace Apishka\Validator\Assert;
 
 use Apishka\Validator\AssertAbstract;
-use Apishka\Validator\Exception;
 
 /**
  * Not null
@@ -38,21 +37,23 @@ class NotNull extends AssertAbstract
     public function process($value, array $options = array())
     {
         if ($value === null)
-            throw new Exception($this->getErrorMessage($options, 'error'));
+            $this->throwException($options, 'error');
 
         return $value;
     }
 
     /**
-     * Get default error messages
+     * Get default errors
      *
      * @return array
      */
 
-    protected function getDefaultErrorMessages()
+    protected function getDefaultErrors()
     {
         return array(
-            'error' => 'is null',
+            'error' => array(
+                'message'   => 'cannot be empty',
+            ),
         );
     }
 }

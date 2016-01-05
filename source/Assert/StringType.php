@@ -40,21 +40,23 @@ class StringType extends AssertAbstract
             return;
 
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($this->getErrorMessage($options, 'error'));
+            $this->throwException($options, 'error');
 
         return (string) $value;
     }
 
     /**
-     * Get default error messages
+     * Get default errors
      *
      * @return array
      */
 
-    protected function getDefaultErrorMessages()
+    protected function getDefaultErrors()
     {
         return array(
-            'error' => 'is not string',
+            'error' => array(
+                'message'   => 'is not string',
+            ),
         );
     }
 }

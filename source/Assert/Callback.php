@@ -1,7 +1,6 @@
 <?php namespace Apishka\Validator\Assert;
 
 use Apishka\Validator\AssertAbstract;
-use Apishka\Validator\Exception;
 
 /**
  * Callback
@@ -38,28 +37,13 @@ class Callback extends AssertAbstract
     public function process($value, array $options = array())
     {
         if (!array_key_exists('callback', $options))
-            throw new Exception($this->getErrorMessage($options, 'error_no_callback'));
+            throw new \InvalidArgumentException('Property "callback" not found in options');
 
         if (!($options['callback'] instanceof \Closure))
-            throw new Exception($this->getErrorMessage($options, 'error_bad_callback'));
+            throw new \InvalidArgumentException('Property "callback" is not function');
 
         $options['callback']($value);
 
         return $value;
-    }
-
-    /**
-     * Get default error messages
-     *
-     * @return array
-     */
-
-    protected function getDefaultErrorMessages()
-    {
-        return array(
-            'error'              => 'is not valid',
-            'error_no_callback'  => 'callback not found',
-            'error_bad_callback' => 'bad callback',
-        );
     }
 }

@@ -1,6 +1,5 @@
 <?php namespace Apishka\Validator\Sanitizer;
 
-use Apishka\Validator\Exception;
 use Apishka\Validator\SanitizerAbstract;
 
 /**
@@ -41,21 +40,23 @@ class Trim extends SanitizerAbstract
             return;
 
         if (is_object($value) || is_resource($value) || is_array($value))
-            throw new Exception($this->getErrorMessage($options, 'error'));
+            $this->throwException($options, 'error');
 
         return trim($value);
     }
 
     /**
-     * Get default error messages
+     * Get default errors
      *
      * @return array
      */
 
-    protected function getDefaultErrorMessages()
+    protected function getDefaultErrors()
     {
         return array(
-            'error' => 'is not string',
+            'error' => array(
+                'message'   => 'wrong input format',
+            ),
         );
     }
 }

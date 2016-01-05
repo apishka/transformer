@@ -51,7 +51,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
      * Test null
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is empty
+     * @expectedExceptionMessage cannot be empty
      */
 
     public function testNull()
@@ -113,7 +113,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
      * Test false
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is empty
+     * @expectedExceptionMessage cannot be empty
      */
 
     public function testFalse()
@@ -125,7 +125,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
      * Test empty string
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is empty
+     * @expectedExceptionMessage cannot be empty
      */
 
     public function testEmptyString()

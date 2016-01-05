@@ -47,8 +47,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     /**
      * Test no callback
      *
-     * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage callback not found
+     * @expectedException        \InvalidArgumentException
+     * @expectedExceptionMessage Property "callback" not found in options
      */
 
     public function testNoCallback()
@@ -59,8 +59,8 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     /**
      * Test bad callback
      *
-     * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage bad callback
+     * @expectedException        \InvalidArgumentException
+     * @expectedExceptionMessage Property "callback" is not function
      */
 
     public function testBadCallback()

@@ -62,7 +62,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
      * Test object
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is not integer
+     * @expectedExceptionMessage wrong input format
      */
 
     public function testObject()
@@ -74,7 +74,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
      * Test array
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is not integer
+     * @expectedExceptionMessage wrong input format
      */
 
     public function testArray()
@@ -98,7 +98,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
      * Test bad string
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is not integer
+     * @expectedExceptionMessage wrong input format
      */
 
     public function testBadString()

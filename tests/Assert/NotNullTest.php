@@ -51,7 +51,7 @@ class NotNullTest extends \PHPUnit_Framework_TestCase
      * Test null
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is null
+     * @expectedExceptionMessage cannot be empty
      */
 
     public function testNull()

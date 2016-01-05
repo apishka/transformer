@@ -50,7 +50,7 @@ class TrimTest extends \PHPUnit_Framework_TestCase
      * Test object
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is not string
+     * @expectedExceptionMessage wrong input format
      */
 
     public function testObject()
@@ -62,7 +62,7 @@ class TrimTest extends \PHPUnit_Framework_TestCase
      * Test array
      *
      * @expectedException        \Apishka\Validator\Exception
-     * @expectedExceptionMessage is not string
+     * @expectedExceptionMessage wrong input format
      */
 
     public function testArray()
