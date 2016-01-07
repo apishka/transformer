@@ -55,34 +55,34 @@ class DateType extends AssertAbstract
         if ($options['allow'] && in_array($value, $options['allow']))
             return $value;
 
-        if (!preg_match('/^(\d{4})-(\d{2})-(\d{2})$/', $value, $matches))
+        if (!preg_match('#^(\d{4})-(\d{2})-(\d{2})$#', $value, $matches))
             $this->throwException($options, 'error');
 
-        if (!checkdate($matches[1], $matches[2], $matches[3]))
+        if (!checkdate($matches[2], $matches[3], $matches[1]))
             $this->throwException($options, 'error');
 
         if ($options['min'] || $options['max'])
         {
-            $date = date_parse($value);
+            $date = new \DateTime($value);
 
             if ($options['min'])
             {
-                $min = date_create($options['min']);
-                if ($min === false)
+                $min = new \DateTime($options['min']);
+                if ($min === false || $min->getLastErrors()['warning_count'])
                     throw new \InvalidArgumentException('Variable for "min" is not date');
 
                 if (intval($date->diff($min)->format('%r%a')) > 0)
-                    $this->throwException($options, 'error_max', array('min' => $options['min']));
+                    $this->throwException($options, 'error_max', array('date' => $options['min']));
             }
 
             if ($options['max'])
             {
-                $max = date_create($options['max']);
-                if ($max === false)
+                $max = new \DateTime($options['max']);
+                if ($max === false || $max->getLastErrors()['warning_count'])
                     throw new \InvalidArgumentException('Variable for "max" is not date');
 
-                if (intval($value_date->diff($max)->format('%r%a')) < 0)
-                    $this->throwException($options, 'error_max', array('max' => $options['max']));
+                if (intval($date->diff($max)->format('%r%a')) < 0)
+                    $this->throwException($options, 'error_max', array('date' => $options['max']));
             }
         }
 
@@ -102,10 +102,10 @@ class DateType extends AssertAbstract
                 'message'   => 'wrong input format',
             ),
             'error_min' => array(
-                'message'   => 'cannot be before {date}',
+                'message'   => 'cannot be after {date}',
             ),
             'error_max' => array(
-                'message'   => 'cannot be after {date}',
+                'message'   => 'cannot be before {date}',
             ),
         );
     }
