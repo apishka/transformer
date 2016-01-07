@@ -3,14 +3,14 @@
 use Apishka\Validator\AssertAbstract;
 
 /**
- * String type
+ * Email type
  *
  * @uses AssertAbstract
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class StringType extends AssertAbstract
+class Email extends AssertAbstract
 {
     /**
      * Get supported names
@@ -21,7 +21,7 @@ class StringType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/String',
+            'Assert/Email',
         );
     }
 
@@ -42,6 +42,18 @@ class StringType extends AssertAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
+        $options = array_replace(
+            array(
+                'check_dns'     => true,
+                'strict'        => true,
+            ),
+            $options
+        );
+
+        $validator = new \Egulias\EmailValidator\EmailValidator();
+        if (!$validator->isValid($value, $options['check_dns'], $options['strict']))
+            $this->throwException($options, 'error');
+
         return (string) $value;
     }
 
@@ -55,7 +67,7 @@ class StringType extends AssertAbstract
     {
         return array(
             'error' => array(
-                'message'   => 'wrong input format',
+                'message'   => 'wrong email format',
             ),
         );
     }
