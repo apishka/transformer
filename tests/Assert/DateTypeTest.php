@@ -158,13 +158,10 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testMinLess()
     {
-        $this->assertSame(
+        $this->prepareAssert()->process(
             '2015-01-01',
-            $this->prepareAssert()->process(
-                '2015-01-01',
-                array(
-                    'min' => '2015-01-02',
-                )
+            array(
+                'min' => '2015-01-02',
             )
         );
     }
@@ -228,13 +225,10 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testMinMore()
     {
-        $this->assertSame(
+        $this->prepareAssert()->process(
             '2015-01-02',
-            $this->prepareAssert()->process(
-                '2015-01-02',
-                array(
-                    'max' => '2015-01-01',
-                )
+            array(
+                'max' => '2015-01-01',
             )
         );
     }
