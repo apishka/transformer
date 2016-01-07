@@ -1,7 +1,5 @@
 <?php namespace Apishka\Validator\Assert;
 
-use Apishka\Validator\AssertAbstract;
-
 /**
  * Time type
  *
