@@ -1,16 +1,16 @@
 <?php namespace ApishkaTest\Validator\Assert;
 
-use Apishka\Validator\Assert\DateType;
+use Apishka\Validator\Assert\TimeType;
 
 /**
- * Date type assert test
+ * Time type assert test
  *
  * @uses \PHPUnit_Framework_TestCase
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class DateTypeTest extends \PHPUnit_Framework_TestCase
+class TimeTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Prepare assert
@@ -20,7 +20,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
 
     protected function prepareAssert()
     {
-        return new DateType();
+        return new TimeType();
     }
 
     /**
@@ -84,7 +84,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testBadFormatDate()
     {
-        $this->prepareAssert()->process('10-03-1987');
+        $this->prepareAssert()->process('10-20-30');
     }
 
     /**
@@ -96,22 +96,21 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
 
     public function testNotExistentDate()
     {
-        $this->prepareAssert()->process('2001-02-29');
+        $this->prepareAssert()->process('10:60:30');
     }
 
     /**
      * Test bad min option
      *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Variable for "min" is not date
+     * @expectedException        \Exception
      */
 
     public function testBadMinOption()
     {
         $this->prepareAssert()->process(
-            '2016-01-01',
+            '10:20:30',
             array(
-                'min' => '2001-02-29',
+                'min' => '10:60:30',
             )
         );
     }
@@ -125,7 +124,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     public function testWrongMinOption()
     {
         $this->prepareAssert()->process(
-            '2016-01-01',
+            '10:20:30',
             array(
                 'min' => 'foo-bar',
             )
@@ -139,11 +138,11 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     public function testMinCorrect()
     {
         $this->assertSame(
-            '2015-01-02',
+            '10:20:30',
             $this->prepareAssert()->process(
-                '2015-01-02',
+                '10:20:30',
                 array(
-                    'min' => '2015-01-01',
+                    'min' => '10:20:00',
                 )
             )
         );
@@ -153,17 +152,17 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
      * Test min less
      *
      * @expectedException        \Apishka\Validator\FriendlyException
-     * @expectedExceptionMessage cannot be before 2015-01-02
+     * @expectedExceptionMessage cannot be before 10:20:30
      */
 
     public function testMinLess()
     {
         $this->assertSame(
-            '2015-01-01',
+            '10:20:00',
             $this->prepareAssert()->process(
-                '2015-01-01',
+                '10:20:00',
                 array(
-                    'min' => '2015-01-02',
+                    'min' => '10:20:30',
                 )
             )
         );
@@ -172,16 +171,15 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test bad max option
      *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Variable for "max" is not date
+     * @expectedException        \Exception
      */
 
     public function testBadMaxOption()
     {
         $this->prepareAssert()->process(
-            '2016-01-01',
+            '10:20:30',
             array(
-                'max' => '2001-02-29',
+                'max' => '10:60:30',
             )
         );
     }
@@ -195,7 +193,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     public function testWrongMaxOption()
     {
         $this->prepareAssert()->process(
-            '2016-01-01',
+            '10:20:30',
             array(
                 'max' => 'foo-bar',
             )
@@ -209,11 +207,28 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     public function testMaxCorrect()
     {
         $this->assertSame(
-            '2015-01-01',
+            '10:20:00',
             $this->prepareAssert()->process(
-                '2015-01-01',
+                '10:20:00',
                 array(
-                    'max' => '2015-01-02',
+                    'max' => '10:20:30',
+                )
+            )
+        );
+    }
+
+    /**
+     * Test max correct with microtime
+     */
+
+    public function testMaxCorrectWithMicrotime()
+    {
+        $this->assertSame(
+            '10:20:00.0001',
+            $this->prepareAssert()->process(
+                '10:20:00.0001',
+                array(
+                    'max' => '10:20:30.0001',
                 )
             )
         );
@@ -223,17 +238,17 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
      * Test min more
      *
      * @expectedException        \Apishka\Validator\FriendlyException
-     * @expectedExceptionMessage cannot be before 2015-01-01
+     * @expectedExceptionMessage cannot be before 10:20:00
      */
 
     public function testMinMore()
     {
         $this->assertSame(
-            '2015-01-02',
+            '10:20:30',
             $this->prepareAssert()->process(
-                '2015-01-02',
+                '10:20:30',
                 array(
-                    'max' => '2015-01-01',
+                    'max' => '10:20:00',
                 )
             )
         );

@@ -1,14 +1,16 @@
 <?php namespace Apishka\Validator\Assert;
 
+use Apishka\Validator\AssertAbstract;
+
 /**
- * Date type
+ * Time type
  *
  * @uses DateTimeTypeAbstract
  *
  * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
-class DateType extends DateTimeTypeAbstract
+class TimeType extends DateTimeTypeAbstract
 {
     /**
      * Get supported names
@@ -19,7 +21,7 @@ class DateType extends DateTimeTypeAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Date',
+            'Assert/Time',
         );
     }
 
@@ -33,7 +35,10 @@ class DateType extends DateTimeTypeAbstract
 
     protected function checkMatches($matches)
     {
-        return $this->checkDate($matches['year'], $matches['month'], $matches['day']);
+        if (!isset($matches['microsecond']))
+            $matches['microsecond'] = 0;
+
+        return $this->checkTime($matches['hour'], $matches['minute'], $matches['second'], $matches['microsecond']);
     }
 
     /**
@@ -44,6 +49,6 @@ class DateType extends DateTimeTypeAbstract
 
     protected function getPattern()
     {
-        return '#^' . static::PATTERN_DATE . '$#';
+        return '#^' . static::PATTERN_TIME . '$#';
     }
 }
