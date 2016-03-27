@@ -4,10 +4,6 @@ use Apishka\Validator\Assert\NotBlank;
 
 /**
  * Not blank assert test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class NotBlankTest extends \PHPUnit_Framework_TestCase

@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Float type
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class FloatType extends AssertAbstract

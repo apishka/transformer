@@ -2,10 +2,6 @@
 
 /**
  * Router
- *
- * @uses \Apishka\EasyExtend\Router\ByKeyAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract

@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Int type
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class IntType extends AssertAbstract

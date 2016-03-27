@@ -4,10 +4,6 @@ use Apishka\Validator\Assert\TimeType;
 
 /**
  * Time type assert test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class TimeTypeTest extends \PHPUnit_Framework_TestCase

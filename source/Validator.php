@@ -2,8 +2,6 @@
 
 /**
  * Validator
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Validator

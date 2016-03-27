@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Callback
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Callback extends AssertAbstract

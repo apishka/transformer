@@ -4,10 +4,6 @@ use Apishka\Validator\Assert\Email;
 
 /**
  * Email assert test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class EmailTest extends \PHPUnit_Framework_TestCase

@@ -5,10 +5,6 @@ use Carbon\Carbon;
 
 /**
  * Date time type abstract
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 abstract class DateTimeTypeAbstract extends AssertAbstract

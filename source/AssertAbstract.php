@@ -2,11 +2,6 @@
 
 /**
  * Assert abstract
- *
- * @uses ConstraintAbstract
- * @abstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 abstract class AssertAbstract extends ConstraintAbstract

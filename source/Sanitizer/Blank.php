@@ -4,10 +4,6 @@ use Apishka\Validator\SanitizerAbstract;
 
 /**
  * Blank
- *
- * @uses SanitizerAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Blank extends SanitizerAbstract

@@ -4,10 +4,6 @@ use Apishka\Validator\Validator;
 
 /**
  * Validator test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class ValidatorTest extends \PHPUnit_Framework_TestCase

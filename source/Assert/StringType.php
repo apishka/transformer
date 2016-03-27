@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * String type
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class StringType extends AssertAbstract

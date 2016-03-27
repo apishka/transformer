@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Email type
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Email extends AssertAbstract

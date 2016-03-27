@@ -2,11 +2,6 @@
 
 /**
  * Constraint abstract
- *
- * @uses ConstraintInterface
- * @abstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 abstract class ConstraintAbstract implements ConstraintInterface

@@ -3,11 +3,8 @@
 /**
  * Exception
  *
- * @uses Exception
  *
  * @easy-extend-base
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class FriendlyException extends Exception

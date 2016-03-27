@@ -4,10 +4,6 @@ use Apishka\Validator\SanitizerAbstract;
 
 /**
  * Trim
- *
- * @uses SanitizerAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Trim extends SanitizerAbstract

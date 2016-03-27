@@ -2,8 +2,6 @@
 
 /**
  * Constraint interface
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 interface ConstraintInterface

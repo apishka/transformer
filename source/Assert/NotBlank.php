@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Not blank
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class NotBlank extends AssertAbstract

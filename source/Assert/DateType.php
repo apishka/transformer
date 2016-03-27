@@ -2,10 +2,6 @@
 
 /**
  * Date type
- *
- * @uses DateTimeTypeAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class DateType extends DateTimeTypeAbstract

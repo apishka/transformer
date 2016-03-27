@@ -4,10 +4,6 @@ use Apishka\Validator\Assert\IntType;
 
 /**
  * Integer assert test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class IntTypeTest extends \PHPUnit_Framework_TestCase

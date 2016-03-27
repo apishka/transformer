@@ -4,10 +4,6 @@ use Apishka\Validator\Sanitizer\Blank;
 
 /**
  * Blank sanitizer test
- *
- * @uses \PHPUnit_Framework_TestCase
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class BlankTest extends \PHPUnit_Framework_TestCase
