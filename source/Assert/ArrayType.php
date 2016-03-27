@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Array type
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class ArrayType extends AssertAbstract
@@ -60,4 +56,3 @@ class ArrayType extends AssertAbstract
         );
     }
 }
-

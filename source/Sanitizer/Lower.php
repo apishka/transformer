@@ -4,10 +4,6 @@ use Apishka\Validator\SanitizerAbstract;
 
 /**
  * Lower
- *
- * @uses SanitizerAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class Lower extends SanitizerAbstract

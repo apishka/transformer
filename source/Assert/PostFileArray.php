@@ -4,10 +4,6 @@ use Apishka\Validator\AssertAbstract;
 
 /**
  * Post file array
- *
- * @uses AssertAbstract
- *
- * @author Evgeny Reykh <evgeny@reykh.com>
  */
 
 class PostFileArray extends AssertAbstract
@@ -66,4 +62,3 @@ class PostFileArray extends AssertAbstract
         );
     }
 }
-
