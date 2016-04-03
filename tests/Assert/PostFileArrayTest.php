@@ -2,6 +2,10 @@
 
 use Apishka\Validator\Assert\PostFileArray;
 
+/**
+ * Post file array assert test
+ */
+
 class PostFileArrayTest extends \PHPUnit_Framework_TestCase
 {
     /**

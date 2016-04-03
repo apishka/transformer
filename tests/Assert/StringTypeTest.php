@@ -2,6 +2,10 @@
 
 use Apishka\Validator\Assert\StringType;
 
+/**
+ * String type assert test
+ */
+
 class StringTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
