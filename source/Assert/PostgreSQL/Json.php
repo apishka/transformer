@@ -47,7 +47,13 @@ class Json extends AssertAbstract
         if (is_object($value))
             $this->throwException($options, 'error');
 
+        if (!is_string($value))
+            $this->throwException($options, 'error');
+
         $result = json_decode($value, true);
+
+        if (json_last_error() != JSON_ERROR_NONE)
+            $this->throwException($options, 'error');
 
         if (!is_array($result))
             $this->throwException($options, 'error');

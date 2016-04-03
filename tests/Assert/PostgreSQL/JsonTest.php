@@ -28,13 +28,13 @@ class JsonTest extends \PHPUnit_Framework_TestCase
         $assert = $this->prepareAssert();
 
         $this->assertSame(
-            array("key" => "value"),
-            $assert->process(json_encode(array("key" => "value")))
+            array('key' => 'value'),
+            $assert->process(json_encode(array('key' => 'value')))
         );
 
         $this->assertSame(
-            array("key" => "value"),
-            $assert->process(array("key" => "value"))
+            array('key' => 'value'),
+            $assert->process(array('key' => 'value'))
         );
 
         $test_obj = new class implements \JsonSerializable {
@@ -70,7 +70,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     public function testIncorrectJson()
     {
-        $this->prepareAssert()->process("{dewwe=}");
+        $this->prepareAssert()->process('{dewwe=}');
     }
 
     /**
@@ -82,6 +82,17 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     public function testIncorrectType()
     {
         $this->prepareAssert()->process(STDOUT);
+    }
+
+    /**
+     * Test incorrect json string
+     * @expectedException        \Apishka\Validator\Exception
+     * @expectedExceptionMessage wrong input format
+     */
+
+    public function testIncorrectType2()
+    {
+        $this->prepareAssert()->process(2);
     }
 
     /**
