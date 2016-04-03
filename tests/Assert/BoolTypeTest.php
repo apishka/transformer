@@ -2,6 +2,10 @@
 
 use Apishka\Validator\Assert\BoolType;
 
+/**
+ * Bool type assert test
+ */
+
 class BoolTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**

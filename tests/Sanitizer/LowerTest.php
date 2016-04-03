@@ -2,6 +2,10 @@
 
 use Apishka\Validator\Sanitizer\Lower;
 
+/**
+ * Lower sanitizer test
+ */
+
 class LowerTest extends \PHPUnit_Framework_TestCase
 {
     /**
