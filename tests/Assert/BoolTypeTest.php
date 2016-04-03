@@ -65,6 +65,7 @@ class BoolTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test wrong values
+     *
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
@@ -78,6 +79,7 @@ class BoolTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Wrong data provider
+     *
      * @return array
      */
 
@@ -85,8 +87,8 @@ class BoolTypeTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array(STDOUT),
-            array(function(){}),
-            array(new \StdClass())
+            array(function () {}),
+            array(new \StdClass()),
         );
     }
 }

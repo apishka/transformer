@@ -54,6 +54,7 @@ class LowerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test wrong values
+     *
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
@@ -67,6 +68,7 @@ class LowerTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Wrong data provider
+     *
      * @return array
      */
 
@@ -75,8 +77,8 @@ class LowerTest extends \PHPUnit_Framework_TestCase
         return array(
             array(array()),
             array(STDOUT),
-            array(function(){}),
-            array(new \StdClass())
+            array(function () {}),
+            array(new \StdClass()),
         );
     }
 }

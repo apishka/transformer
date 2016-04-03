@@ -46,6 +46,7 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test wrong values
+     *
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
@@ -59,6 +60,7 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Wrong data provider
+     *
      * @return array
      */
 
@@ -66,8 +68,8 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             array('test'),
-            array(function(){}),
-            array(new \StdClass())
+            array(function () {}),
+            array(new \StdClass()),
         );
     }
 }

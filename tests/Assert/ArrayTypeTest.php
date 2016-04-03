@@ -45,6 +45,7 @@ class ArrayTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test wrong types
+     *
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
@@ -58,6 +59,7 @@ class ArrayTypeTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Wrong data provider
+     *
      * @return array
      */
 
@@ -68,8 +70,8 @@ class ArrayTypeTest extends \PHPUnit_Framework_TestCase
             array(1.2),
             array(true),
             array('test'),
-            array(function(){}),
-            array(new \StdClass())
+            array(function () {}),
+            array(new \StdClass()),
         );
     }
 }
