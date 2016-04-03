@@ -38,7 +38,7 @@ class PostFileArray extends AssertAbstract
         if (!is_array($value))
             $this->throwException($options, 'error');
 
-        if ($value['error'] != UPLOAD_ERR_OK)
+        if (!isset($value['error']) || $value['error'] != UPLOAD_ERR_OK)
             $this->throwException($options, 'upload');
 
         return $value;
