@@ -64,6 +64,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test incorrect json string
+     *
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
      */
@@ -75,6 +76,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test incorrect json string
+     *
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
      */
@@ -86,6 +88,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test incorrect json string
+     *
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
      */
@@ -97,6 +100,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
 
     /**
      * Test incorrect json string
+     *
      * @expectedException        \Apishka\Validator\Exception
      * @expectedExceptionMessage wrong input format
      */
