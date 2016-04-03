@@ -85,6 +85,17 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test incorrect json string
+     * @expectedException        \Apishka\Validator\Exception
+     * @expectedExceptionMessage wrong input format
+     */
+
+    public function testIncorrectObject()
+    {
+        $this->prepareAssert()->process(new class {});
+    }
+
+    /**
      * Test object reference
      */
 

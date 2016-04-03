@@ -44,6 +44,9 @@ class Json extends AssertAbstract
         if ($value instanceof \JsonSerializable)
             return $value;
 
+        if (is_object($value))
+            $this->throwException($options, 'error');
+
         $result = json_decode($value, true);
 
         if (!is_array($result))
