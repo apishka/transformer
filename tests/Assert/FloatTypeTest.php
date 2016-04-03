@@ -2,6 +2,10 @@
 
 use Apishka\Validator\Assert\FloatType;
 
+/**
+ * Float type assert test
+ */
+
 class FloatTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
