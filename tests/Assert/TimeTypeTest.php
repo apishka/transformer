@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\TimeType;
+use Apishka\Validator\Transform\TimeType;
 
 /**
  * Time type assert test

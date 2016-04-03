@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\DateTimeType;
+use Apishka\Validator\Transform\DateTimeType;
 
 /**
  * Date time type assert test

@@ -1,33 +1,11 @@
 <?php namespace Apishka\Validator;
 
 /**
- * Constraint abstract
+ * Transform abstract
  */
 
-abstract class ConstraintAbstract implements ConstraintInterface
+abstract class TransformAbstract implements TransformInterface
 {
-    /**
-     * Is sanitizer
-     *
-     * @return bool
-     */
-
-    public function isSanitizer()
-    {
-        return false;
-    }
-
-    /**
-     * Is assert
-     *
-     * @return bool
-     */
-
-    public function isAssert()
-    {
-        return false;
-    }
-
     /**
      * Get default error messages
      *

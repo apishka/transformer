@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Sanitizer;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Sanitizer\Blank;
+use Apishka\Validator\Transform\Blank;
 
 /**
  * Blank sanitizer test

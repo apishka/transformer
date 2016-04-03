@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\PostFileArray;
+use Apishka\Validator\Transform\PostFileArray;
 
 /**
  * Post file array assert test

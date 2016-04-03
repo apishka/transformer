@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Callback
  */
 
-class Callback extends AssertAbstract
+class Callback extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Callback extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Callback',
+            'Transform/Callback',
         );
     }
 

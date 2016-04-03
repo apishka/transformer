@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert\PostgreSQL;
+<?php namespace ApishkaTest\Validator\Transform\PostgreSQL;
 
-use Apishka\Validator\Assert\PostgreSQL\Json;
+use Apishka\Validator\Transform\PostgreSQL\Json;
 
 /**
  * Json assert test

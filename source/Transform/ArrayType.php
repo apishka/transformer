@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Not blank
+ * Array type
  */
 
-class NotBlank extends AssertAbstract
+class ArrayType extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class NotBlank extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/NotBlank',
+            'Transform/Array',
         );
     }
 
@@ -27,12 +27,15 @@ class NotBlank extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return mixed
+     * @return string|null
      */
 
     public function process($value, array $options = array())
     {
-        if (empty($value) && $value !== '0' && $value !== 0)
+        if ($value === null)
+            return;
+
+        if (!is_array($value))
             $this->throwException($options, 'error');
 
         return $value;
@@ -48,7 +51,7 @@ class NotBlank extends AssertAbstract
     {
         return array(
             'error' => array(
-                'message'   => 'cannot be empty',
+                'message'   => 'wrong input format',
             ),
         );
     }

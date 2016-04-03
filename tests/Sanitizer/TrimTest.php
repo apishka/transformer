@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Sanitizer;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Sanitizer\Trim;
+use Apishka\Validator\Transform\Trim;
 
 /**
  * Trim sanitizer test

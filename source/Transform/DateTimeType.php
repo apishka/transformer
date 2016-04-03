@@ -1,4 +1,4 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
 /**
  * Date time type
@@ -15,7 +15,7 @@ class DateTimeType extends DateTimeTypeAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/DateTime',
+            'Transform/DateTime',
         );
     }
 }

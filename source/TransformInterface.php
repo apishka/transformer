@@ -1,27 +1,11 @@
 <?php namespace Apishka\Validator;
 
 /**
- * Constraint interface
+ * Transform interface
  */
 
-interface ConstraintInterface
+interface TransformInterface
 {
-    /**
-     * Is sanitizer
-     *
-     * @return bool
-     */
-
-    public function isSanitizer();
-
-    /**
-     * Is assert
-     *
-     * @return bool
-     */
-
-    public function isAssert();
-
     /**
      * Get supported names
      *

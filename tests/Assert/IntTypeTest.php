@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\IntType;
+use Apishka\Validator\Transform\IntType;
 
 /**
  * Integer assert test

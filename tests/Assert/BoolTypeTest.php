@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\BoolType;
+use Apishka\Validator\Transform\BoolType;
 
 /**
  * Bool type assert test

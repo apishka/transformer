@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Float type
+ * Int type
  */
 
-class FloatType extends AssertAbstract
+class IntType extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class FloatType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Float',
+            'Transform/Int',
         );
     }
 
@@ -27,7 +27,7 @@ class FloatType extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return float|null
+     * @return int|null
      */
 
     public function process($value, array $options = array())
@@ -38,26 +38,10 @@ class FloatType extends AssertAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
-        $patterns = array(
-            '#^[+-]?[0-9]+$#',
-            '#^[+-]?([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*)$#',
-            '#^[+-]?(([0-9]+|([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*))[eE][+-]?[0-9]+)$#',
-        );
-
-        $is_float = false;
-        foreach ($patterns as $pattern)
-        {
-            if (preg_match($pattern, $value))
-            {
-                $is_float = true;
-                break;
-            }
-        }
-
-        if (!$is_float)
+        if (strcmp($value, (int) $value) != 0)
             $this->throwException($options, 'error');
 
-        return (float) $value;
+        return (int) $value;
     }
 
     /**

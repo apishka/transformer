@@ -1,13 +1,13 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 use Carbon\Carbon;
 
 /**
  * Date time type abstract
  */
 
-abstract class DateTimeTypeAbstract extends AssertAbstract
+abstract class DateTimeTypeAbstract extends TransformAbstract
 {
     /**
      * Patterns

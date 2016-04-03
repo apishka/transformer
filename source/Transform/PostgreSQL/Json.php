@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert\PostgreSQL;
+<?php namespace Apishka\Validator\Transform\PostgreSQL;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Json type
  */
 
-class Json extends AssertAbstract
+class Json extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Json extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/PostgreSQL/Json',
+            'Transform/PostgreSQL/Json',
         );
     }
 

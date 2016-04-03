@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Post file array
+ * Not blank
  */
 
-class PostFileArray extends AssertAbstract
+class NotBlank extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class PostFileArray extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/PostFileArray',
+            'Transform/NotBlank',
         );
     }
 
@@ -27,19 +27,13 @@ class PostFileArray extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return string|null
+     * @return mixed
      */
 
     public function process($value, array $options = array())
     {
-        if ($value === null)
-            return;
-
-        if (!is_array($value))
+        if (empty($value) && $value !== '0' && $value !== 0)
             $this->throwException($options, 'error');
-
-        if (!isset($value['error']) || $value['error'] != UPLOAD_ERR_OK)
-            $this->throwException($options, 'upload');
 
         return $value;
     }
@@ -54,10 +48,7 @@ class PostFileArray extends AssertAbstract
     {
         return array(
             'error' => array(
-                'message'   => 'wrong input format',
-            ),
-            'upload' => array(
-                'message'   => 'upload error',
+                'message'   => 'cannot be empty',
             ),
         );
     }

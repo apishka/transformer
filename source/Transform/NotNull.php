@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Not null
  */
 
-class NotNull extends AssertAbstract
+class NotNull extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class NotNull extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/NotNull',
+            'Transform/NotNull',
         );
     }
 

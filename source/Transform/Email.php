@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Email type
  */
 
-class Email extends AssertAbstract
+class Email extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Email extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Email',
+            'Transform/Email',
         );
     }
 

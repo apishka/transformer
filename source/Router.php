@@ -16,7 +16,7 @@ class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract
 
     protected function isCorrectItem(\ReflectionClass $reflector)
     {
-        return $reflector->isSubclassOf('Apishka\Validator\ConstraintInterface');
+        return $reflector->isSubclassOf('Apishka\Validator\TransformInterface');
     }
 
     /**

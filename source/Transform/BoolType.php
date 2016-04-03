@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Array type
+ * Bool type
  */
 
-class ArrayType extends AssertAbstract
+class BoolType extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class ArrayType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Array',
+            'Transform/Bool',
         );
     }
 
@@ -27,7 +27,7 @@ class ArrayType extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return string|null
+     * @return int|null
      */
 
     public function process($value, array $options = array())
@@ -35,10 +35,10 @@ class ArrayType extends AssertAbstract
         if ($value === null)
             return;
 
-        if (!is_array($value))
+        if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
-        return $value;
+        return (bool) $value ? 1 : 0;
     }
 
     /**

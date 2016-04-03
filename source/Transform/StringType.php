@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Sanitizer;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\SanitizerAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Trim
+ * String type
  */
 
-class Trim extends SanitizerAbstract
+class StringType extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Trim extends SanitizerAbstract
     public function getSupportedNames()
     {
         return array(
-            'Sanitizer/Trim',
+            'Transform/String',
         );
     }
 
@@ -27,7 +27,7 @@ class Trim extends SanitizerAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return mixed
+     * @return string|null
      */
 
     public function process($value, array $options = array())
@@ -38,7 +38,7 @@ class Trim extends SanitizerAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
-        return trim($value);
+        return (string) $value;
     }
 
     /**

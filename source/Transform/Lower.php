@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Sanitizer;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\SanitizerAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Lower
  */
 
-class Lower extends SanitizerAbstract
+class Lower extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Lower extends SanitizerAbstract
     public function getSupportedNames()
     {
         return array(
-            'Sanitizer/Lower',
+            'Transform/Lower',
         );
     }
 

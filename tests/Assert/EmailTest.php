@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\Email;
+use Apishka\Validator\Transform\Email;
 
 /**
  * Email assert test

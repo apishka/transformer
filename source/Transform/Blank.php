@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Sanitizer;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\SanitizerAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
  * Blank
  */
 
-class Blank extends SanitizerAbstract
+class Blank extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class Blank extends SanitizerAbstract
     public function getSupportedNames()
     {
         return array(
-            'Sanitizer/Blank',
+            'Transform/Blank',
         );
     }
 

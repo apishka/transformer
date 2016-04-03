@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\StringType;
+use Apishka\Validator\Transform\StringType;
 
 /**
  * String type assert test

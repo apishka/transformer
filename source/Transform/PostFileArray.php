@@ -1,12 +1,12 @@
-<?php namespace Apishka\Validator\Assert;
+<?php namespace Apishka\Validator\Transform;
 
-use Apishka\Validator\AssertAbstract;
+use Apishka\Validator\TransformAbstract;
 
 /**
- * Int type
+ * Post file array
  */
 
-class IntType extends AssertAbstract
+class PostFileArray extends TransformAbstract
 {
     /**
      * Get supported names
@@ -17,7 +17,7 @@ class IntType extends AssertAbstract
     public function getSupportedNames()
     {
         return array(
-            'Assert/Int',
+            'Transform/PostFileArray',
         );
     }
 
@@ -27,7 +27,7 @@ class IntType extends AssertAbstract
      * @param mixed $value
      * @param array $options
      *
-     * @return int|null
+     * @return string|null
      */
 
     public function process($value, array $options = array())
@@ -35,13 +35,13 @@ class IntType extends AssertAbstract
         if ($value === null)
             return;
 
-        if (is_object($value) || is_resource($value) || is_array($value))
+        if (!is_array($value))
             $this->throwException($options, 'error');
 
-        if (strcmp($value, (int) $value) != 0)
-            $this->throwException($options, 'error');
+        if (!isset($value['error']) || $value['error'] != UPLOAD_ERR_OK)
+            $this->throwException($options, 'upload');
 
-        return (int) $value;
+        return $value;
     }
 
     /**
@@ -55,6 +55,9 @@ class IntType extends AssertAbstract
         return array(
             'error' => array(
                 'message'   => 'wrong input format',
+            ),
+            'upload' => array(
+                'message'   => 'upload error',
             ),
         );
     }

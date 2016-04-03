@@ -1,15 +1,15 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\ArrayType;
+use Apishka\Validator\Transform\ArrayType;
 
 /**
- * Array type assert test
+ * Array type test
  */
 
 class ArrayTypeTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Prepare assert
+     * Prepare array type
      *
      * @return ArrayType
      */

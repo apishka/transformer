@@ -28,7 +28,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->prepareValidator()->validate(
             10,
             [
-                'Assert/NotNull',
+                'Transform/NotNull',
             ]
         );
     }
@@ -45,7 +45,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->prepareValidator()->validate(
             null,
             [
-                'Assert/NotNull',
+                'Transform/NotNull',
             ]
         );
     }
@@ -62,7 +62,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
         $this->prepareValidator()->validate(
             'test',
             [
-                'Assert/Callback' => [
+                'Transform/Callback' => [
                     'callback' => function ($value)
                     {
                         if ($value === 'test')

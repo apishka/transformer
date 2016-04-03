@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\FloatType;
+use Apishka\Validator\Transform\FloatType;
 
 /**
  * Float type assert test

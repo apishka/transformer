@@ -1,5 +1,5 @@
 {
-    "name": "apishka/validator",
+    "name": "apishka/transformer",
     "description": "Validator and sanitizer",
     "keywords": ["sanitizer", "validator"],
     "license": "MIT",

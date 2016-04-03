@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Assert;
+<?php namespace ApishkaTest\Validator\Transform;
 
-use Apishka\Validator\Assert\NotBlank;
+use Apishka\Validator\Transform\NotBlank;
 
 /**
  * Not blank assert test
