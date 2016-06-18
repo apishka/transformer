@@ -13,7 +13,7 @@
         "php": ">=7.0",
         "apishka/easy-extend": "^1.2.10",
         "nesbot/carbon": "^1.21",
-        "egulias/email-validator": "^1.2"
+        "egulias/email-validator": "^2.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.1.4",

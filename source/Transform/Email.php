@@ -46,8 +46,19 @@ class Email extends TransformAbstract
             $options
         );
 
+
+        $validators     = array();
+
+        if ($options['strict'])
+            $validators[] = new \Egulias\EmailValidator\Validation\RFCValidation();
+
+        if ($options['check_dns'])
+            $validators[] = new \Egulias\EmailValidator\Validation\RFCValidation();
+
+        $validations = new \Egulias\EmailValidator\Validation\MultipleValidationWithAnd($validators);
+
         $validator = new \Egulias\EmailValidator\EmailValidator();
-        if (!$validator->isValid($value, $options['check_dns'], $options['strict']))
+        if (!$validator->isValid($value, $validations))
             $this->throwException($options, 'error');
 
         return (string) $value;
