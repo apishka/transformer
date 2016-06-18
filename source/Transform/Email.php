@@ -46,7 +46,6 @@ class Email extends TransformAbstract
             $options
         );
 
-
         $validators     = array();
 
         if ($options['strict'])
