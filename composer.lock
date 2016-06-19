@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "56ca67aeee867f7ccf93248ae429ab41",
+    "hash": "a97dec00d2356d510e4d50cc0fed705c",
     "content-hash": "c728e1b4795b872234c545f48f591d03",
     "packages": [
         {
             "name": "apishka/easy-extend",
-            "version": "1.2.14",
+            "version": "1.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/easy-extend.git",
-                "reference": "da9c322fba4582fa2e3f479653acb519d919fe22"
+                "reference": "42fac2e7580077b6d76654f21c5cb7d6d81236a5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apishka/easy-extend/zipball/da9c322fba4582fa2e3f479653acb519d919fe22",
-                "reference": "da9c322fba4582fa2e3f479653acb519d919fe22",
+                "url": "https://api.github.com/repos/apishka/easy-extend/zipball/42fac2e7580077b6d76654f21c5cb7d6d81236a5",
+                "reference": "42fac2e7580077b6d76654f21c5cb7d6d81236a5",
                 "shasum": ""
             },
             "require": {
@@ -61,7 +61,7 @@
                 "extend",
                 "extending"
             ],
-            "time": "2016-03-27 11:41:16"
+            "time": "2016-06-18 11:38:50"
         },
         {
             "name": "doctrine/lexer",
