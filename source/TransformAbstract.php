@@ -49,6 +49,8 @@ abstract class TransformAbstract implements TransformInterface
             : $this->getDefaultError($name)
         ;
 
+        $error['message_class'] = get_class($this);
+
         throw FriendlyException::apishka($error, $params);
     }
 }
