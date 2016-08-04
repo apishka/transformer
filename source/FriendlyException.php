@@ -119,19 +119,4 @@ class FriendlyException extends Exception
 
         return 0;
     }
-
-    /**
-     * Call static prepare
-     *
-     * @param array  $data
-     * @param string $name
-     * @param array  $arguments
-     *
-     * @return FriendlyException this
-     */
-
-    protected static function __apishka(array $data, $name, array $arguments)
-    {
-        return new $data['class'](...$arguments);
-    }
 }
