@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\Callback;
+use Apishka\Transformer\Transform\Callback;
 
 /**
  * Callback assert test

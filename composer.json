@@ -21,12 +21,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Apishka\\Validator\\": "source"
+            "Apishka\\Transformer\\": "source"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "ApishkaTest\\Validator\\": "tests"
+            "ApishkaTest\\Transformer\\": "tests"
         }
     }
 }

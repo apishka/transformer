@@ -1,4 +1,4 @@
-<?php namespace Apishka\Validator;
+<?php namespace Apishka\Transformer;
 
 /**
  * Router
@@ -16,7 +16,7 @@ class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract
 
     protected function isCorrectItem(\ReflectionClass $reflector)
     {
-        return $reflector->isSubclassOf('Apishka\Validator\TransformInterface');
+        return $reflector->isSubclassOf('Apishka\Transformer\TransformInterface');
     }
 
     /**

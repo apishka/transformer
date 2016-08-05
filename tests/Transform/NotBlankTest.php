@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\NotBlank;
+use Apishka\Transformer\Transform\NotBlank;
 
 /**
  * Not blank assert test
@@ -46,7 +46,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
 
@@ -108,7 +108,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     /**
      * Test false
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
 
@@ -120,7 +120,7 @@ class NotBlankTest extends \PHPUnit_Framework_TestCase
     /**
      * Test empty string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
 

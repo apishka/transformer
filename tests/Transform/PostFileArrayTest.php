@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\PostFileArray;
+use Apishka\Transformer\Transform\PostFileArray;
 
 /**
  * Post file array assert test
@@ -47,7 +47,7 @@ class PostFileArrayTest extends \PHPUnit_Framework_TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  wrong input format
      */
 
@@ -60,7 +60,7 @@ class PostFileArrayTest extends \PHPUnit_Framework_TestCase
     /**
      * Test wrong values
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  upload
      */
 
@@ -73,7 +73,7 @@ class PostFileArrayTest extends \PHPUnit_Framework_TestCase
     /**
      * Test wrong values
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  upload
      */
 

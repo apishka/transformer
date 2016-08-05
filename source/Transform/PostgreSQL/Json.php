@@ -1,6 +1,6 @@
-<?php namespace Apishka\Validator\Transform\PostgreSQL;
+<?php namespace Apishka\Transformer\Transform\PostgreSQL;
 
-use Apishka\Validator\TransformAbstract;
+use Apishka\Transformer\TransformAbstract;
 
 /**
  * Json type

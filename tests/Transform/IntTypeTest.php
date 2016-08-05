@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\IntType;
+use Apishka\Transformer\Transform\IntType;
 
 /**
  * Integer assert test
@@ -57,7 +57,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test object
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -69,7 +69,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test array
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -93,7 +93,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test bad string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 

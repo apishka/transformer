@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\DateType;
+use Apishka\Transformer\Transform\DateType;
 
 /**
  * Date type assert test
@@ -33,7 +33,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test object
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -45,7 +45,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test array
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -74,7 +74,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test bad format date
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -86,7 +86,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test not existent date
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -148,7 +148,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test min less
      *
-     * @expectedException        \Apishka\Validator\FriendlyException
+     * @expectedException        \Apishka\Transformer\FriendlyException
      * @expectedExceptionMessage cannot be before 2015-01-02
      */
 
@@ -215,7 +215,7 @@ class DateTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Test min more
      *
-     * @expectedException        \Apishka\Validator\FriendlyException
+     * @expectedException        \Apishka\Transformer\FriendlyException
      * @expectedExceptionMessage cannot be before 2015-01-01
      */
 

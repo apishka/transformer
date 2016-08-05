@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform\PostgreSQL;
+<?php namespace Apishka\Transformer\Transform\PostgreSQL;
 
-use Apishka\Validator\Transform\PostgreSQL\Json;
+use Apishka\Transformer\Transform\PostgreSQL\Json;
 
 /**
  * Json assert test
@@ -65,7 +65,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test incorrect json string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -77,7 +77,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test incorrect json string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -89,7 +89,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test incorrect json string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
@@ -101,7 +101,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     /**
      * Test incorrect json string
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 

@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\StringType;
+use Apishka\Transformer\Transform\StringType;
 
 /**
  * String type assert test
@@ -57,7 +57,7 @@ class StringTypeTest extends \PHPUnit_Framework_TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 

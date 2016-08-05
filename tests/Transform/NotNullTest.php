@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\NotNull;
+use Apishka\Transformer\Transform\NotNull;
 
 /**
  * Not null assert test
@@ -46,7 +46,7 @@ class NotNullTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
 

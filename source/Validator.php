@@ -1,4 +1,4 @@
-<?php namespace Apishka\Validator;
+<?php namespace Apishka\Transformer;
 
 /**
  * Validator

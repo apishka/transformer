@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator;
+<?php namespace Apishka\Transformer;
 
-use Apishka\Validator\Validator;
+use Apishka\Transformer\Validator;
 
 /**
  * Validator test
@@ -36,7 +36,7 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
     /**
      * Test null
      *
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
 

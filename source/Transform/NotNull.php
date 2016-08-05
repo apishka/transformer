@@ -1,6 +1,6 @@
-<?php namespace Apishka\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\TransformAbstract;
+use Apishka\Transformer\TransformAbstract;
 
 /**
  * Not null

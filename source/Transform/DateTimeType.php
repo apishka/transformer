@@ -1,4 +1,4 @@
-<?php namespace Apishka\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
 /**
  * Date time type

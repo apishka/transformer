@@ -1,6 +1,6 @@
-<?php namespace ApishkaTest\Validator\Transform;
+<?php namespace Apishka\Transformer\Transform;
 
-use Apishka\Validator\Transform\FloatType;
+use Apishka\Transformer\Transform\FloatType;
 
 /**
  * Float type assert test
@@ -52,7 +52,7 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Validator\Exception
+     * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
 
