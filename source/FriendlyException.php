@@ -97,6 +97,9 @@ class FriendlyException extends Exception
     {
         $message = $error['message'];
 
+        if ($message instanceof Localizer_Translation)
+            return $message->setParams($params)->translate;
+
         foreach ($params as $name => $value)
             $message = str_replace('{' . $name . '}', $value, $message);
 
