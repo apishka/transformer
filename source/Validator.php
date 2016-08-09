@@ -25,13 +25,16 @@ class Validator
     {
         foreach ($validations as $validation => $options)
         {
-            if (is_int($validation))
+            $condition = true;
+            if (array_key_exists('condition', $options))
             {
-                $validation = $options;
-                $options    = array();
+                $condition = $options['condition'];
+                if ($condition instanceof Closure)
+                    $condition = call_user_func($condition);
             }
 
-            $value = Router::apishka()->getItem($validation)->process($value, $options);
+            if ($condition)
+                $value = Router::apishka()->getItem($validation)->process($value, $options);
         }
 
         return $value;
