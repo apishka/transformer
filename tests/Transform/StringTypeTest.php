@@ -1,4 +1,4 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\StringType;
 

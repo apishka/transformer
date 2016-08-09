@@ -1,4 +1,4 @@
-<?php namespace Apishka\Transformer\Transform\PostgreSQL;
+<?php namespace ApishkaTest\Transformer\Transform\PostgreSQL;
 
 use Apishka\Transformer\Transform\PostgreSQL\Json;
 
