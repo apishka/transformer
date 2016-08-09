@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a97dec00d2356d510e4d50cc0fed705c",
+    "hash": "1061e7cbc700570881c29a8800caa192",
     "content-hash": "c728e1b4795b872234c545f48f591d03",
     "packages": [
         {
@@ -119,16 +119,16 @@
         },
         {
             "name": "egulias/email-validator",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/egulias/EmailValidator.git",
-                "reference": "19811e00829958f06d9bfbfeb0d0e6b7aaff3767"
+                "reference": "30562b69fc6c8e9740645877a98063b3842204b2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/19811e00829958f06d9bfbfeb0d0e6b7aaff3767",
-                "reference": "19811e00829958f06d9bfbfeb0d0e6b7aaff3767",
+                "url": "https://api.github.com/repos/egulias/EmailValidator/zipball/30562b69fc6c8e9740645877a98063b3842204b2",
+                "reference": "30562b69fc6c8e9740645877a98063b3842204b2",
                 "shasum": ""
             },
             "require": {
@@ -139,6 +139,9 @@
                 "dominicsayers/isemail": "dev-master",
                 "phpunit/phpunit": "^4.8.0",
                 "satooshi/php-coveralls": "dev-master"
+            },
+            "suggest": {
+                "ext/php-intl": "PHP Internationalization Libraries are required to use the SpoofChecking validation"
             },
             "type": "library",
             "extra": {
@@ -169,7 +172,7 @@
                 "validation",
                 "validator"
             ],
-            "time": "2016-07-12 13:22:10"
+            "time": "2016-08-07 21:18:59"
         },
         {
             "name": "nesbot/carbon",
@@ -454,16 +457,16 @@
     "packages-dev": [
         {
             "name": "apishka/cs",
-            "version": "1.0.0",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/cs.git",
-                "reference": "10b6780df43fda66a653df19da55603a7ae9648d"
+                "reference": "54abe967ea05df8406d3b7e8bf06c7663879b556"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apishka/cs/zipball/10b6780df43fda66a653df19da55603a7ae9648d",
-                "reference": "10b6780df43fda66a653df19da55603a7ae9648d",
+                "url": "https://api.github.com/repos/apishka/cs/zipball/54abe967ea05df8406d3b7e8bf06c7663879b556",
+                "reference": "54abe967ea05df8406d3b7e8bf06c7663879b556",
                 "shasum": ""
             },
             "type": "library",
@@ -481,7 +484,7 @@
                 "cs",
                 "style"
             ],
-            "time": "2015-06-06 14:33:20"
+            "time": "2016-08-02 07:36:17"
         },
         {
             "name": "doctrine/instantiator",
@@ -1033,16 +1036,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "5.4.8",
+            "version": "5.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "3132365e1430c091f208e120b8845d39c25f20e6"
+                "reference": "c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3132365e1430c091f208e120b8845d39c25f20e6",
-                "reference": "3132365e1430c091f208e120b8845d39c25f20e6",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b",
+                "reference": "c7b3e1dcc1d183f26d5ba282881fe65c2cbb5b2b",
                 "shasum": ""
             },
             "require": {
@@ -1081,7 +1084,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "5.4.x-dev"
+                    "dev-master": "5.5.x-dev"
                 }
             },
             "autoload": {
@@ -1107,7 +1110,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2016-07-26 14:48:00"
+            "time": "2016-08-05 04:49:02"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

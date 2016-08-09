@@ -26,7 +26,7 @@ class Validator
         foreach ($validations as $validation => $options)
         {
             $condition = true;
-            if (array_key_exists('condition', $options))
+            if (is_array($options) && array_key_exists('condition', $options))
             {
                 $condition = $options['condition'];
                 if ($condition instanceof Closure)
