@@ -29,7 +29,7 @@ class Validator
             if (is_array($options) && array_key_exists('condition', $options))
             {
                 $condition = $options['condition'];
-                if ($condition instanceof Closure)
+                if ($condition instanceof \Closure)
                     $condition = call_user_func($condition);
             }
 
