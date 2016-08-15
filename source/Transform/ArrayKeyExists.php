@@ -41,10 +41,15 @@ class ArrayKeyExists extends TransformAbstract
         if (!array_key_exists('values', $options))
             throw new \InvalidArgumentException('Property "values" not found in options');
 
-        if (!is_array($options['values']))
+        if (!is_array($options['values']) && !($options['values'] instanceof \Closure))
             throw new \InvalidArgumentException('Property "values" is not function');
 
-        if (!array_key_exists((string) $value, $options['values']))
+        $values = is_array($options['values'])
+            ? $options['values']
+            : call_user_func($options['values'])
+        ;
+
+        if (!array_key_exists((string) $value, $values))
             $this->throwException($options, 'error');
 
         return $value;

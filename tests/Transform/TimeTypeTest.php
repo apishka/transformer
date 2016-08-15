@@ -11,7 +11,7 @@ class TimeTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
-     * @return Int
+     * @return TimeType
      */
 
     protected function prepareAssert()

@@ -11,7 +11,7 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
-     * @return Int
+     * @return int
      */
 
     protected function prepareAssert()

@@ -11,7 +11,7 @@ class BlankTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
-     * @return Int
+     * @return Blank
      */
 
     protected function prepareSanitizer()

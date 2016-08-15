@@ -117,7 +117,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
     public function testObjectReference()
     {
         $test_obj1 = new class implements \JsonSerializable {
-            protected $a=1;
+            protected $a = 1;
             function jsonSerialize()
             {
                 return ['a' => $this->a];
@@ -125,7 +125,7 @@ class JsonTest extends \PHPUnit_Framework_TestCase
         };
 
         $test_obj2 = new class implements \JsonSerializable {
-            protected $a=1;
+            protected $a = 1;
             function jsonSerialize()
             {
                 return ['a' => $this->a];

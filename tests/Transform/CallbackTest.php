@@ -11,7 +11,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
-     * @return Int
+     * @return Callback
      */
 
     protected function prepareAssert()

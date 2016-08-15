@@ -109,6 +109,7 @@ class ArrayKeyExistsTest extends \PHPUnit_Framework_TestCase
             array(1.2, ['1.2' => 'test']),
             array(true, ['1' => 'test']),
             array('test', ['test' => 'test1']),
+            array('test', function () {return array('test' => 123);}),
         );
     }
 }

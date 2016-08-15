@@ -11,7 +11,7 @@ class TrimTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
-     * @return Int
+     * @return Trim
      */
 
     protected function prepareSanitizer()

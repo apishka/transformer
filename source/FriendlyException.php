@@ -81,7 +81,7 @@ class FriendlyException extends Exception
         if (array_key_exists('message_class', $this->getErrorParams()))
             return $this->getErrorParams()['message_class'];
 
-        return null;
+        return;
     }
 
     /**
