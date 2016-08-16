@@ -36,7 +36,7 @@ class Phone extends TransformAbstract
             return;
 
         if (!class_exists('\libphonenumber\PhoneNumberUtil'))
-            throw new RuntimeException('Library for phone checking not found');
+            throw new \RuntimeException('Library for phone checking not found');
 
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
