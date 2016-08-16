@@ -89,4 +89,25 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
             ]
         );
     }
+
+    /**
+     * Test returning
+     */
+
+    public function testReturning()
+    {
+        $this->assertSame(
+            20,
+            $this->prepareAssert()->process(
+                10,
+                [
+                    'returning' => true,
+                    'callback' => function ($value)
+                    {
+                        return $value + 10;
+                    },
+                ]
+            )
+        );
+    }
 }

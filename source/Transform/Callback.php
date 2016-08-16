@@ -38,7 +38,9 @@ class Callback extends TransformAbstract
         if (!($options['callback'] instanceof \Closure))
             throw new \InvalidArgumentException('Property "callback" is not function');
 
-        $options['callback']($value);
+        $result = $options['callback']($value);
+        if (array_key_exists('returning', $options) && $options['returning'])
+            return $result;
 
         return $value;
     }
