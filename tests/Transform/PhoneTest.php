@@ -53,7 +53,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     {
         $this->prepareAssert()->process(array(1));
     }
-    
+
     /**
      * Test empty country code
      *
@@ -101,7 +101,7 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
-    
+
     /**
      * Test another phone format
      */

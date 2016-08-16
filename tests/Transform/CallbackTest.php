@@ -102,7 +102,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
                 10,
                 [
                     'returning' => true,
-                    'callback' => function ($value)
+                    'callback'  => function ($value)
                     {
                         return $value + 10;
                     },

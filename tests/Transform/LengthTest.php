@@ -75,7 +75,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
                 array(
                     'min' => 0,
                     'max' => 5,
-                )
+                ),
             ),
             array(
                 10.0,
@@ -83,7 +83,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
                 array(
                     'min' => 0,
                     'max' => 5,
-                )
+                ),
             ),
             array(
                 '10.0',
@@ -91,7 +91,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
                 array(
                     'min' => 0,
                     'max' => 5,
-                )
+                ),
             ),
         );
     }
@@ -130,21 +130,21 @@ class LengthTest extends \PHPUnit_Framework_TestCase
                 10,
                 array(
                     'min' => 5,
-                )
+                ),
             ),
             array(
                 10.0,
                 10.0,
                 array(
                     'min' => 5,
-                )
+                ),
             ),
             array(
                 '10.0',
                 '10.0',
                 array(
                     'min' => 5,
-                )
+                ),
             ),
         );
     }
@@ -183,21 +183,21 @@ class LengthTest extends \PHPUnit_Framework_TestCase
                 10,
                 array(
                     'max' => 1,
-                )
+                ),
             ),
             array(
                 10.0,
                 10.0,
                 array(
                     'max' => 1,
-                )
+                ),
             ),
             array(
                 '10.0',
                 '10.0',
                 array(
                     'max' => 1,
-                )
+                ),
             ),
         );
     }
@@ -232,4 +232,3 @@ class LengthTest extends \PHPUnit_Framework_TestCase
         );
     }
 }
-
