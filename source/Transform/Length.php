@@ -50,7 +50,7 @@ class Length extends TransformAbstract
             $this->throwException($options, 'error_min', ['count' => $options['min'], 'length' => $length]);
 
         if (isset($options['max']) && $length > $options['max'])
-            $this->throwException($options, 'error_max', ['count' => $options['min'], 'length' => $length]);
+            $this->throwException($options, 'error_max', ['count' => $options['max'], 'length' => $length]);
 
         return $value;
     }
