@@ -39,7 +39,7 @@ class Length extends TransformAbstract
             $this->throwException($options, 'error');
 
         if (!isset($options['min']) && !isset($options['max']))
-            throw new InvalidArgumentException('Not found "min" or "max" not found in options');
+            throw new \InvalidArgumentException('Not found "min" or "max" in options');
 
         $length = function_exists('mb_strlen')
             ? mb_strlen($value)
