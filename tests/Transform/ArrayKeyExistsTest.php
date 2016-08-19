@@ -90,7 +90,7 @@ class ArrayKeyExistsTest extends \PHPUnit_Framework_TestCase
     public function testGoodValues($value, $values)
     {
         $assert = $this->prepareAssert();
-        $this->assertEquals(
+        $this->assertSame(
             $value,
             $assert->process($value, ['values' => $values])
         );
