@@ -136,4 +136,38 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
+
+    /**
+     * Test toll free number
+     */
+
+    public function testTollFreeNumber()
+    {
+        $this->assertSame(
+            '8003838',
+            $this->prepareAssert()->process(
+                '800(38-38)',
+                array(
+                    'country_code' => 'AE',
+                )
+            )
+        );
+    }
+
+    /**
+     * Test toll free number with letters
+     */
+
+    public function testTollFreeNumberWithLetters()
+    {
+        $this->assertSame(
+            '8003838',
+            $this->prepareAssert()->process(
+                '800(du-du)',
+                array(
+                    'country_code' => 'AE',
+                )
+            )
+        );
+    }
 }

@@ -41,14 +41,20 @@ class Phone extends TransformAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
-        if (!preg_match('#^\+#', $value))
-            $value = '+' . $value;
-
-        $util = \libphonenumber\PhoneNumberUtil::getInstance();
-
         try
         {
+            $util = \libphonenumber\PhoneNumberUtil::getInstance();
+
+            $is_toll_free = true;
             $phone = $util->parse($value, $this->getDefaultCountryCode($options));
+            if ($util->getNumberType($phone) != \libphonenumber\phonenumberType::TOLL_FREE)
+            {
+                $is_toll_free = false;
+                if (!preg_match('#^\+#', $value))
+                    $value = '+' . $value;
+
+                $phone = $util->parse($value, $this->getDefaultCountryCode($options));
+            }
         }
         catch(\libphonenumber\NumberParseException $e)
         {
@@ -57,6 +63,9 @@ class Phone extends TransformAbstract
 
         if (!$util->isValidNumber($phone))
             $this->throwException($options, 'error');
+
+        if ($is_toll_free)
+            return $phone->getNationalNumber();
 
         return (string) $util->format($phone, $this->getDefaultPhoneFormat($options));
     }
