@@ -170,4 +170,38 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
+
+    /**
+     * Test short phone
+     */
+
+    public function testShortPhone()
+    {
+        $this->assertSame(
+            '+971501234567',
+            $this->prepareAssert()->process(
+                '0501234567',
+                array(
+                    'country_code' => 'AE',
+                )
+            )
+        );
+    }
+
+    /**
+     * Test bad phone
+     *
+     * @expectedException        \Apishka\Transformer\Exception
+     * @expectedExceptionMessage wrong phone format
+     */
+
+    public function testBadPhone()
+    {
+        $this->prepareAssert()->process(
+            '123456789012345789',
+            array(
+                'country_code' => 'AE',
+            )
+        );
+    }
 }

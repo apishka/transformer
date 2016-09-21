@@ -43,23 +43,14 @@ class Phone extends TransformAbstract
 
         try
         {
-            $util = \libphonenumber\PhoneNumberUtil::getInstance();
-
-            $is_toll_free = true;
-            $phone = $util->parse($value, $this->getDefaultCountryCode($options));
-            if ($util->getNumberType($phone) != \libphonenumber\phonenumberType::TOLL_FREE)
-            {
-                $is_toll_free = false;
-                if (!preg_match('#^\+#', $value))
-                    $value = '+' . $value;
-
-                $phone = $util->parse($value, $this->getDefaultCountryCode($options));
-            }
+            $phone = $this->getPhone($value, $options, $is_toll_free);
         }
         catch(\libphonenumber\NumberParseException $e)
         {
             $this->throwException($options, 'error');
         }
+
+        $util = \libphonenumber\PhoneNumberUtil::getInstance();
 
         if (!$util->isValidNumber($phone))
             $this->throwException($options, 'error');
@@ -68,6 +59,51 @@ class Phone extends TransformAbstract
             return $phone->getNationalNumber();
 
         return (string) $util->format($phone, $this->getDefaultPhoneFormat($options));
+    }
+
+    /**
+     * Get phone
+     *
+     * @param string $value
+     * @param array  $options
+     * @param bool   $is_toll_free
+     *
+     * @return \libphonenumber\PhoneNumber
+     */
+
+    protected function getPhone($value, $options, &$is_toll_free)
+    {
+        $util = \libphonenumber\PhoneNumberUtil::getInstance();
+
+        $is_toll_free = false;
+
+        $phone = $util->parse($value, $this->getDefaultCountryCode($options));
+        if ($util->getNumberType($phone) == \libphonenumber\phonenumberType::TOLL_FREE)
+        {
+            $is_toll_free = true;
+
+            return $phone;
+        }
+
+        $values = array_unique(
+            array(
+                !preg_match('#^\+#', $value) ? '+' . $value : $value,
+                $value,
+            )
+        );
+
+        foreach ($values as $value)
+        {
+            try
+            {
+                 return $util->parse($value, $this->getDefaultCountryCode($options));
+            }
+            catch (\libphonenumber\NumberParseException $e)
+            {
+            }
+        }
+
+        throw $e;
     }
 
     /**
