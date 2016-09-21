@@ -155,6 +155,23 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test bad toll free number
+     *
+     * @expectedException        \Apishka\Transformer\Exception
+     * @expectedExceptionMessage wrong phone format
+     */
+
+    public function testBadTollFreeNumber()
+    {
+        $this->prepareAssert()->process(
+            '+800(38-38)',
+            array(
+                'country_code' => 'AE',
+            )
+        );
+    }
+
+    /**
      * Test toll free number with letters
      */
 
