@@ -123,17 +123,33 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
     /**
      * Test simple phone
      *
+     * @dataProvider             providerNotValidPhone
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong phone format
      */
 
-    public function testNotValidPhone()
+    public function testNotValidPhone($phone, $country_code)
     {
         $this->prepareAssert()->process(
-            'some text',
+            $phone,
             array(
-                'country_code' => 'RU',
+                'country_code' => $country_code,
             )
+        );
+    }
+
+    /**
+     * Provider not valid phone
+     *
+     * @return array
+     */
+
+    public function providerNotValidPhone()
+    {
+        return array(
+            array('some text', 'RU'),
+            array('00', 'AE'),
+            array('anonymous', 'AE'),
         );
     }
 
