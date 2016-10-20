@@ -49,7 +49,7 @@ class LengthTest extends \PHPUnit_Framework_TestCase
      * @param mixed $value
      * @param array $options
      *
-     * @dataProvider             goodValuesProvider
+     * @dataProvider             providerTestGoodValues
      */
 
     public function testGoodValues($expected, $value, array $options)
@@ -61,12 +61,12 @@ class LengthTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Wrong data provider
+     * Provider test good values
      *
      * @return array
      */
 
-    public function goodValuesProvider()
+    public function providerTestGoodValues()
     {
         return array(
             array(
