@@ -52,7 +52,7 @@ class Email extends TransformAbstract
             $validators[] = new \Egulias\EmailValidator\Validation\RFCValidation();
 
         if ($options['check_dns'])
-            $validators[] = new \Egulias\EmailValidator\Validation\RFCValidation();
+            $validators[] = new \Egulias\EmailValidator\Validation\DNSCheckValidation();
 
         $validations = new \Egulias\EmailValidator\Validation\MultipleValidationWithAnd($validators);
 
