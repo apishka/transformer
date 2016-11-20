@@ -101,4 +101,33 @@ class IntTypeTest extends \PHPUnit_Framework_TestCase
     {
         $this->prepareAssert()->process('123abc');
     }
+
+    /**
+     * Test filters
+     */
+
+    public function testFilters()
+    {
+        $this->assertSame(
+            1123123,
+            $this->prepareAssert()->process('1 123 123')
+        );
+    }
+
+    /**
+     * Test without filters
+     *
+     * @expectedException        \Apishka\Transformer\Exception
+     * @expectedExceptionMessage wrong input format
+     */
+
+    public function testWithoutFilters()
+    {
+        $this->prepareAssert()->process(
+            '1 123 123',
+            array(
+                'apply_filters' => false,
+            )
+        );
+    }
 }
