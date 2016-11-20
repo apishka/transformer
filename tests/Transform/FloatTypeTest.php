@@ -76,4 +76,33 @@ class FloatTypeTest extends \PHPUnit_Framework_TestCase
             array(new \StdClass()),
         );
     }
+
+    /**
+     * Test with filters
+     */
+
+    public function testWithFilters()
+    {
+        $this->assertSame(
+            1123123.123,
+            $this->prepareAssert()->process('1 123 123.123')
+        );
+    }
+
+    /**
+     * Test without filters
+     */
+
+    public function testWithoutFilters()
+    {
+        $this->assertSame(
+            1.0,
+            $this->prepareAssert()->process(
+                '1 123 123.123',
+                array(
+                    'apply_filters' => false,
+                )
+            )
+        );
+    }
 }
