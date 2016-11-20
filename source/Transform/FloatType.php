@@ -38,6 +38,8 @@ class FloatType extends TransformAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
+        $value = preg_replace('#\s+#', '', $value);
+
         $patterns = array(
             '#^[+-]?[0-9]+$#',
             '#^[+-]?([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*)$#',

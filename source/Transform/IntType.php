@@ -38,6 +38,8 @@ class IntType extends TransformAbstract
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');
 
+        $value = preg_replace('#\D+#', '', $value);
+
         if (strcmp($value, (int) $value) != 0)
             $this->throwException($options, 'error');
 
