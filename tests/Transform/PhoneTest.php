@@ -237,4 +237,47 @@ class PhoneTest extends \PHPUnit_Framework_TestCase
             )
         );
     }
+
+    /**
+     * Test toll free number
+     */
+
+    public function testValidPhoneType()
+    {
+        $this->assertSame(
+            '+971501115599',
+            $this->prepareAssert()->process(
+                '+971501115599',
+                array(
+                    'country_code' => 'AE',
+                    'type_ids' => array(
+                        \libphonenumber\PhoneNumberType::MOBILE,
+                    ),
+                )
+            )
+        );
+    }
+
+    /**
+     * Test toll free number
+     *
+     * @expectedException        \Apishka\Transformer\Exception
+     * @expectedExceptionMessage wrong phone type
+     */
+
+    public function testNotValidPhoneType()
+    {
+        $this->assertSame(
+            '+971501115599',
+            $this->prepareAssert()->process(
+                '+971501115599',
+                array(
+                    'country_code' => 'AE',
+                    'type_ids' => array(
+                        \libphonenumber\PhoneNumberType::FIXED_LINE,
+                    ),
+                )
+            )
+        );
+    }
 }

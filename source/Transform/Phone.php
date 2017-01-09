@@ -43,7 +43,7 @@ class Phone extends TransformAbstract
 
         try
         {
-            $phone = $this->getPhone($value, $options, $is_toll_free);
+            $phone = $this->getPhone($value, $options, $type_id);
         }
         catch(\libphonenumber\NumberParseException $e)
         {
@@ -55,7 +55,10 @@ class Phone extends TransformAbstract
         if (!$util->isValidNumber($phone))
             $this->throwException($options, 'error');
 
-        if ($is_toll_free)
+        if (array_key_exists('type_ids', $options) && !in_array($type_id, $options['type_ids']))
+            $this->throwException($options, 'wrong_type');
+
+        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE)
             return $phone->getNationalNumber();
 
         return (string) $util->format($phone, $this->getDefaultPhoneFormat($options));
@@ -66,22 +69,21 @@ class Phone extends TransformAbstract
      *
      * @param string $value
      * @param array  $options
-     * @param bool   $is_toll_free
+     * @param int    $type_id
      *
      * @return \libphonenumber\PhoneNumber
      */
 
-    protected function getPhone($value, $options, &$is_toll_free)
+    protected function getPhone($value, $options, &$type_id)
     {
         $util = \libphonenumber\PhoneNumberUtil::getInstance();
 
-        $is_toll_free = false;
-
         $phone = $util->parse($value, $this->getDefaultCountryCode($options));
-        if ($util->getNumberType($phone) == \libphonenumber\phonenumberType::TOLL_FREE)
-        {
-            $is_toll_free = true;
 
+        $type_id = $util->getNumberType($phone);
+
+        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE)
+        {
             return $phone;
         }
 
@@ -117,6 +119,9 @@ class Phone extends TransformAbstract
         return array(
             'error' => array(
                 'message'   => 'wrong phone format',
+            ),
+            'wrong_type' => array(
+                'message'   => 'wrong phone type',
             ),
         );
     }
