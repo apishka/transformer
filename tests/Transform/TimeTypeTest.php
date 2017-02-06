@@ -20,6 +20,33 @@ class TimeTypeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test wrong values
+     *
+     * @dataProvider             providerTestGoodValues
+     */
+
+    public function testGoodValues($value)
+    {
+        $assert = $this->prepareAssert();
+        $assert->process($value);
+    }
+
+    /**
+     * Wrong data provider
+     *
+     * @return array
+     */
+
+    public function providerTestGoodValues()
+    {
+        return array(
+            array('10:00:00.123456'),
+            array('10:00:00'),
+            array('10:00'),
+        );
+    }
+
+    /**
      * Test null
      */
 

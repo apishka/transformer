@@ -14,7 +14,7 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      */
 
     const PATTERN_DATE = '(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})';
-    const PATTERN_TIME = '(?P<hour>\d{2}):(?P<minute>\d{2}):(?P<second>\d{2})(?:\.(?P<microsecond>\d+))?';
+    const PATTERN_TIME = '(?P<hour>\d{2}):(?P<minute>\d{2})(?::(?P<second>\d{2})(?:\.(?P<microsecond>\d+))?)?';
 
     /**
      * Process
@@ -54,7 +54,15 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
 
             if ($options['min'])
             {
-                $min = new Carbon($options['min']);
+                try
+                {
+                    $min = new Carbon($options['min']);
+                }
+                catch (\InvalidArgumentException $e)
+                {
+                    $min = false;
+                }
+
                 if ($min === false || $min->getLastErrors()['warning_count'])
                     throw new \InvalidArgumentException('Variable for "min" is not date');
 
@@ -64,7 +72,15 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
 
             if ($options['max'])
             {
-                $max = new Carbon($options['max']);
+                try
+                {
+                    $max = new Carbon($options['max']);
+                }
+                catch (\InvalidArgumentException $e)
+                {
+                    $max = false;
+                }
+
                 if ($max === false || $max->getLastErrors()['warning_count'])
                     throw new \InvalidArgumentException('Variable for "max" is not date');
 
@@ -90,6 +106,9 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
             return false;
 
         if (!isset($matches['microsecond']))
+            $matches['microsecond'] = 0;
+
+        if (!isset($matches['second']))
             $matches['microsecond'] = 0;
 
         if (!$this->checkTime($matches['hour'], $matches['minute'], $matches['second']))

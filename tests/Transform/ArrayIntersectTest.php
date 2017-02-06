@@ -11,10 +11,12 @@ class ArrayIntersectTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
+     * @param array $options
+     *
      * @return ArrayIntersect
      */
 
-    protected function prepareAssert()
+    protected function prepareAssert(array $options = array())
     {
         return new ArrayIntersect($options);
     }

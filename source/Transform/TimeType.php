@@ -29,6 +29,9 @@ class TimeType extends DateTimeTypeAbstract
 
     protected function checkMatches($matches)
     {
+        if (!isset($matches['second']))
+            $matches['second'] = 0;
+
         if (!isset($matches['microsecond']))
             $matches['microsecond'] = 0;
 

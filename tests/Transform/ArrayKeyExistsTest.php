@@ -11,10 +11,12 @@ class ArrayKeyExistsTest extends \PHPUnit_Framework_TestCase
     /**
      * Prepare assert
      *
+     * @param array $options
+     *
      * @return ArrayKeyExists
      */
 
-    protected function prepareAssert()
+    protected function prepareAssert(array $options = array())
     {
         return new ArrayKeyExists($options);
     }
