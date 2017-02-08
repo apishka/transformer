@@ -32,16 +32,26 @@ class Callback extends TransformAbstract
 
     public function process($value, array $options = array())
     {
+        $result_value = $value;
+
         if (!array_key_exists('callback', $options))
             throw new \InvalidArgumentException('Property "callback" not found in options');
 
-        if (!($options['callback'] instanceof \Closure))
-            throw new \InvalidArgumentException('Property "callback" is not function');
+        $callbacks = !is_array($options['callback'])
+            ? array($options['callback'])
+            : $options['callback']
+        ;
 
-        $result = $options['callback']($value);
-        if (array_key_exists('returning', $options) && $options['returning'])
-            return $result;
+        foreach ($callbacks as $callback)
+        {
+            if (!($callback instanceof \Closure))
+                throw new \InvalidArgumentException('Callback is not function');
 
-        return $value;
+            $result = $callback($result_value);
+            if (array_key_exists('returning', $options) && $options['returning'])
+                $result_value = $result;
+        }
+
+        return $result_value;
     }
 }

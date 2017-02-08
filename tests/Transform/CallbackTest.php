@@ -41,6 +41,34 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test integer array
+     */
+
+    public function testIntegerArray()
+    {
+        $this->assertSame(
+            10,
+            $this->prepareAssert()->process(
+                10,
+                [
+                    'callback' => array(
+                        function ($value)
+                        {
+                            if ($value !== 10)
+                                throw new \Exception();
+                        },
+                        function ($value)
+                        {
+                            if (!is_int(10))
+                                throw new \Exception();
+                        },
+                    ),
+                ]
+            )
+        );
+    }
+
+    /**
      * Test no callback
      *
      * @expectedException        \InvalidArgumentException
@@ -56,7 +84,7 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
      * Test bad callback
      *
      * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Property "callback" is not function
+     * @expectedExceptionMessage Callback is not function
      */
 
     public function testBadCallback()
@@ -91,6 +119,34 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test callback array
+     *
+     * @expectedException        \Exception
+     * @expectedExceptionMessage wrong value
+     */
+
+    public function testCallbackArray()
+    {
+        $this->prepareAssert()->process(
+            9,
+            [
+                'callback' => array(
+                    function ($value)
+                    {
+                        if ($value !== 10)
+                            throw new \Exception('wrong value');
+                    },
+                    function ($value)
+                    {
+                        if ($value !== 11)
+                            throw new \Exception('wrong value in two');
+                    },
+                ),
+            ]
+        );
+    }
+
+    /**
      * Test returning
      */
 
@@ -106,6 +162,33 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
                     {
                         return $value + 10;
                     },
+                ]
+            )
+        );
+    }
+
+    /**
+     * Test returning array
+     */
+
+    public function testReturningArray()
+    {
+        $this->assertSame(
+            30,
+            $this->prepareAssert()->process(
+                10,
+                [
+                    'returning' => true,
+                    'callback'  => array(
+                        function ($value)
+                        {
+                            return $value + 10;
+                        },
+                        function ($value)
+                        {
+                            return $value + 10;
+                        },
+                    ),
                 ]
             )
         );
