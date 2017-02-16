@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Email;
  * Email assert test
  */
 
-class EmailTest extends \PHPUnit_Framework_TestCase
+class EmailTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

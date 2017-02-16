@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Phone;
  * Phone assert test
  */
 
-class PhoneTest extends \PHPUnit_Framework_TestCase
+class PhoneTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

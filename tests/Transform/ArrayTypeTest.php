@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\ArrayType;
  * Array type test
  */
 
-class ArrayTypeTest extends \PHPUnit_Framework_TestCase
+class ArrayTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare array type

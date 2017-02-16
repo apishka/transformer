@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\TimeType;
  * Time type assert test
  */
 
-class TimeTypeTest extends \PHPUnit_Framework_TestCase
+class TimeTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert
@@ -28,7 +28,10 @@ class TimeTypeTest extends \PHPUnit_Framework_TestCase
     public function testGoodValues($value)
     {
         $assert = $this->prepareAssert();
-        $assert->process($value);
+        $this->assertSame(
+            $value,
+            $assert->process($value)
+        );
     }
 
     /**

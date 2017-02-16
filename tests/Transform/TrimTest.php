@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Trim;
  * Trim sanitizer test
  */
 
-class TrimTest extends \PHPUnit_Framework_TestCase
+class TrimTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

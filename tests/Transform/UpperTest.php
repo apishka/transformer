@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Upper;
  * Upper transform test
  */
 
-class UpperTest extends \PHPUnit_Framework_TestCase
+class UpperTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

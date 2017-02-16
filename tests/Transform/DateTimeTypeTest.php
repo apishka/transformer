@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\DateTimeType;
  * Date time type assert test
  */
 
-class DateTimeTypeTest extends \PHPUnit_Framework_TestCase
+class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

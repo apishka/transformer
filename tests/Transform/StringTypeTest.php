@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\StringType;
  * String type assert test
  */
 
-class StringTypeTest extends \PHPUnit_Framework_TestCase
+class StringTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

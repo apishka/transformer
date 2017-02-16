@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\IntType;
  * Integer assert test
  */
 
-class IntTypeTest extends \PHPUnit_Framework_TestCase
+class IntTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

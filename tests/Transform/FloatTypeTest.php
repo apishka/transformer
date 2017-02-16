@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\FloatType;
  * Float type assert test
  */
 
-class FloatTypeTest extends \PHPUnit_Framework_TestCase
+class FloatTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

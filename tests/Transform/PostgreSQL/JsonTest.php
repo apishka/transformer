@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\PostgreSQL\Json;
  * Json assert test
  */
 
-class JsonTest extends \PHPUnit_Framework_TestCase
+class JsonTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

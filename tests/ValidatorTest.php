@@ -6,7 +6,7 @@ use Apishka\Transformer\Validator;
  * Validator test
  */
 
-class ValidatorTest extends \PHPUnit_Framework_TestCase
+class ValidatorTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert
@@ -25,11 +25,14 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testNotNull()
     {
-        $this->prepareValidator()->validate(
+        $this->assertSame(
             10,
-            [
-                'Transform/NotNull' => [],
-            ]
+            $this->prepareValidator()->validate(
+                10,
+                [
+                    'Transform/NotNull' => [],
+                ]
+            )
         );
     }
 
@@ -79,17 +82,20 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbackWithBooleanCondition()
     {
-        $this->prepareValidator()->validate(
+        $this->assertSame(
             'test',
-            [
-                'Transform/Callback' => [
-                    'callback' => function ($value)
-                    {
-                        throw new \Exception('wrong value');
-                    },
-                    'condition' => false,
-                ],
-            ]
+            $this->prepareValidator()->validate(
+                'test',
+                [
+                    'Transform/Callback' => [
+                        'callback' => function ($value)
+                        {
+                            throw new \Exception('wrong value');
+                        },
+                        'condition' => false,
+                    ],
+                ]
+            )
         );
     }
 
@@ -99,20 +105,23 @@ class ValidatorTest extends \PHPUnit_Framework_TestCase
 
     public function testCallbackWithFunctionCondition()
     {
-        $this->prepareValidator()->validate(
+        $this->assertSame(
             'test',
-            [
-                'Transform/Callback' => [
-                    'callback' => function ($value)
-                    {
-                        throw new \Exception('wrong value');
-                    },
-                    'condition' => function ()
-                    {
-                        return false;
-                    },
-                ],
-            ]
+            $this->prepareValidator()->validate(
+                'test',
+                [
+                    'Transform/Callback' => [
+                        'callback' => function ($value)
+                        {
+                            throw new \Exception('wrong value');
+                        },
+                        'condition' => function ()
+                        {
+                            return false;
+                        },
+                    ],
+                ]
+            )
         );
     }
 }

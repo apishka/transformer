@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\NotBlank;
  * Not blank assert test
  */
 
-class NotBlankTest extends \PHPUnit_Framework_TestCase
+class NotBlankTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

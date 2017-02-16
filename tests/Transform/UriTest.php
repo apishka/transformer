@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Uri;
  * Uri test
  */
 
-class UriTest extends \PHPUnit_Framework_TestCase
+class UriTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

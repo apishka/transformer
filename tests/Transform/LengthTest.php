@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Length;
  * Length transform test
  */
 
-class LengthTest extends \PHPUnit_Framework_TestCase
+class LengthTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

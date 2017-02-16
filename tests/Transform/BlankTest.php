@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Blank;
  * Blank sanitizer test
  */
 
-class BlankTest extends \PHPUnit_Framework_TestCase
+class BlankTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

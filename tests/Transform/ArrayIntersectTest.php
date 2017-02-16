@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\ArrayIntersect;
  * Array key exists test
  */
 
-class ArrayIntersectTest extends \PHPUnit_Framework_TestCase
+class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

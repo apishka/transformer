@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\ArrayKeyExists;
  * Array key exists test
  */
 
-class ArrayKeyExistsTest extends \PHPUnit_Framework_TestCase
+class ArrayKeyExistsTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

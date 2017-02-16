@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\BoolType;
  * Bool type assert test
  */
 
-class BoolTypeTest extends \PHPUnit_Framework_TestCase
+class BoolTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

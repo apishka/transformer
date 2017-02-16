@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Lower;
  * Lower sanitizer test
  */
 
-class LowerTest extends \PHPUnit_Framework_TestCase
+class LowerTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

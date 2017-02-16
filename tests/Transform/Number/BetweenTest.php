@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Number\Between;
  * Length transform test
  */
 
-class BetweenTest extends \PHPUnit_Framework_TestCase
+class BetweenTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

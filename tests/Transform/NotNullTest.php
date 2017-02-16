@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\NotNull;
  * Not null assert test
  */
 
-class NotNullTest extends \PHPUnit_Framework_TestCase
+class NotNullTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

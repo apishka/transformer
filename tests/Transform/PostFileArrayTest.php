@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\PostFileArray;
  * Post file array assert test
  */
 
-class PostFileArrayTest extends \PHPUnit_Framework_TestCase
+class PostFileArrayTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert

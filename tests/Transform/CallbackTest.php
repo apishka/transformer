@@ -6,7 +6,7 @@ use Apishka\Transformer\Transform\Callback;
  * Callback assert test
  */
 
-class CallbackTest extends \PHPUnit_Framework_TestCase
+class CallbackTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert
