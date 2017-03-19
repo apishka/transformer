@@ -58,7 +58,7 @@ class Phone extends TransformAbstract
         if (array_key_exists('type_ids', $options) && !in_array($type_id, $options['type_ids']))
             $this->throwException($options, 'wrong_type');
 
-        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE)
+        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE || $type_id == \libphonenumber\phonenumberType::UAN)
             return $phone->getNationalNumber();
 
         return (string) $util->format($phone, $this->getDefaultPhoneFormat($options));
@@ -82,10 +82,8 @@ class Phone extends TransformAbstract
 
         $type_id = $util->getNumberType($phone);
 
-        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE)
-        {
+        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE || $type_id == \libphonenumber\phonenumberType::UAN)
             return $phone;
-        }
 
         $values = array_unique(
             array(

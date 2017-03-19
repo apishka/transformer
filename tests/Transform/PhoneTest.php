@@ -171,6 +171,23 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test uan number
+     */
+
+    public function testUanNumber()
+    {
+        $this->assertSame(
+            '600544000',
+            $this->prepareAssert()->process(
+                '600(544-000)',
+                array(
+                    'country_code' => 'AE',
+                )
+            )
+        );
+    }
+
+    /**
      * Test bad toll free number
      *
      * @expectedException        \Apishka\Transformer\Exception
