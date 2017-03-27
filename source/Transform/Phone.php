@@ -82,7 +82,7 @@ class Phone extends TransformAbstract
 
         $type_id = $util->getNumberType($phone);
 
-        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE || $type_id == \libphonenumber\phonenumberType::UAN)
+        if ($type_id == \libphonenumber\phonenumberType::TOLL_FREE)
             return $phone;
 
         $values = array_unique(
