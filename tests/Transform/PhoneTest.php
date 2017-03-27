@@ -177,7 +177,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     public function testUanNumber()
     {
         $this->assertSame(
-            '+917600544000',
+            '+971600544000',
             $this->prepareAssert()->process(
                 '600(544-000)',
                 array(
