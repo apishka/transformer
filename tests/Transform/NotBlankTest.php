@@ -106,6 +106,18 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test float with zero
+     */
+
+    public function testFloatWithZero()
+    {
+        $this->assertSame(
+            0.0,
+            $this->prepareAssert()->process(0.0)
+        );
+    }
+
+    /**
      * Test false
      *
      * @expectedException        \Apishka\Transformer\Exception

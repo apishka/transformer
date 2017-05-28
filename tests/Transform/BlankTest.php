@@ -99,4 +99,16 @@ class BlankTest extends \PHPUnit\Framework\TestCase
             $this->prepareSanitizer()->process(0)
         );
     }
+
+    /**
+     * Test string
+     */
+
+    public function testFloatZero()
+    {
+        $this->assertSame(
+            0.0,
+            $this->prepareSanitizer()->process(0.0)
+        );
+    }
 }

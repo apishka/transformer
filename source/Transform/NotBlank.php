@@ -32,7 +32,7 @@ class NotBlank extends TransformAbstract
 
     public function process($value, array $options = array())
     {
-        if (empty($value) && $value !== '0' && $value !== 0)
+        if (empty($value) && $value !== '0' && $value !== 0 && $value !== .0)
             $this->throwException($options, 'error');
 
         return $value;

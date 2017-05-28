@@ -32,6 +32,18 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     }
 
     /**
+     * Test float
+     */
+
+    public function testFloat()
+    {
+        $this->assertSame(
+            0,
+            $this->prepareAssert()->process(0.0)
+        );
+    }
+
+    /**
      * Test string
      */
 
