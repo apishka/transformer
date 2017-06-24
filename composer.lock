@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0999a9a0481650c7ff2b4b8272726935",
+    "content-hash": "12379ebf1e375f07dec183c28e45b576",
     "packages": [
         {
             "name": "apishka/easy-extend",
@@ -64,16 +64,16 @@
         },
         {
             "name": "apishka/singleton",
-            "version": "0.0.1",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/apishka/singleton.git",
-                "reference": "225d5419febaf159bf3b7a81015438e6436764ff"
+                "reference": "fda0e54c337dd424d8812cede8d04f6228a857e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/apishka/singleton/zipball/225d5419febaf159bf3b7a81015438e6436764ff",
-                "reference": "225d5419febaf159bf3b7a81015438e6436764ff",
+                "url": "https://api.github.com/repos/apishka/singleton/zipball/fda0e54c337dd424d8812cede8d04f6228a857e9",
+                "reference": "fda0e54c337dd424d8812cede8d04f6228a857e9",
                 "shasum": ""
             },
             "require": {
@@ -104,7 +104,7 @@
             "keywords": [
                 "singleton"
             ],
-            "time": "2017-06-24T13:52:14+00:00"
+            "time": "2017-06-24T14:48:18+00:00"
         },
         {
             "name": "doctrine/lexer",

@@ -40,7 +40,7 @@ class IntType extends TransformAbstract
 
         $value = $this->applyFilters($value, $options);
 
-        if (strcmp($value, (int) $value) != 0)
+        if (!is_bool($value) && strcmp($value, (int) $value) != 0)
             $this->throwException($options, 'error');
 
         return (int) $value;
@@ -72,7 +72,7 @@ class IntType extends TransformAbstract
 
     protected function applyFilters($value, $options = array())
     {
-        if (array_key_exists('apply_filters', $options) && !$options['apply_filters'])
+        if (!is_string($value) || (array_key_exists('apply_filters', $options) && !$options['apply_filters']))
             return $value;
 
         $filters = array(
