@@ -11,6 +11,20 @@ class Validator
      */
 
     use \Apishka\EasyExtend\Helper\ByClassNameTrait;
+    use \Apishka\Singleton\SingletonTrait;
+
+    /**
+     * Get supported names
+     *
+     * @return array
+     */
+
+    public function getSupportedNames()
+    {
+        return array(
+            'validator',
+        );
+    }
 
     /**
      * Validate
