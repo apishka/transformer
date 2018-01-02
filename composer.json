@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=7.0",
-        "apishka/easy-extend": "^1.2.10",
+        "apishka/easy-extend": "*",
         "apishka/singleton": "^1.0.1",
         "nesbot/carbon": "^1.21",
         "egulias/email-validator": "^2.0"
