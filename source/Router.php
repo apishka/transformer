@@ -1,10 +1,13 @@
-<?php namespace Apishka\Transformer;
+<?php declare(strict_types = 1);
+
+namespace Apishka\Transformer;
+
+use Apishka\EasyExtend\Router\ByKeyAbstract;
 
 /**
  * Router
  */
-
-class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract
+class Router extends ByKeyAbstract
 {
     /**
      * Checks item for correct information
@@ -13,10 +16,9 @@ class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract
      *
      * @return bool
      */
-
-    protected function isCorrectItem(\ReflectionClass $reflector)
+    protected function isCorrectItem(\ReflectionClass $reflector): bool
     {
-        return $reflector->isSubclassOf('Apishka\Transformer\TransformInterface');
+        return $reflector->isSubclassOf(TransformInterface::class);
     }
 
     /**
@@ -27,8 +29,7 @@ class Router extends \Apishka\EasyExtend\Router\ByKeyAbstract
      *
      * @return array
      */
-
-    protected function getClassVariants(\ReflectionClass $reflector, $item)
+    protected function getClassVariants(\ReflectionClass $reflector, $item): array
     {
         return $item->getSupportedNames();
     }

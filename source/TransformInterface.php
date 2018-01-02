@@ -1,9 +1,10 @@
-<?php namespace Apishka\Transformer;
+<?php declare(strict_types = 1);
+
+namespace Apishka\Transformer;
 
 /**
  * Transform interface
  */
-
 interface TransformInterface
 {
     /**
@@ -11,7 +12,6 @@ interface TransformInterface
      *
      * @return array
      */
-
     public function getSupportedNames();
 
     /**
@@ -20,8 +20,7 @@ interface TransformInterface
      * @param mixed $value
      * @param array $options
      *
-     * @return int
+     * @return mixed
      */
-
     public function process($value, array $options = array());
 }
