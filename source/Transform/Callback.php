@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Callback
  */
-
 class Callback extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Callback extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Callback',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Callback extends TransformAbstract
      *
      * @return mixed
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         $result_value = $value;
 
@@ -38,7 +37,7 @@ class Callback extends TransformAbstract
             throw new \InvalidArgumentException('Property "callback" not found in options');
 
         $callbacks = !is_array($options['callback'])
-            ? array($options['callback'])
+            ? [$options['callback']]
             : $options['callback']
         ;
 

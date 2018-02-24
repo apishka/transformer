@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Post file array
  */
-
 class PostFileArray extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class PostFileArray extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/PostFileArray',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class PostFileArray extends TransformAbstract
      *
      * @return string|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -49,16 +48,15 @@ class PostFileArray extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-            'upload' => array(
+            ],
+            'upload' => [
                 'message'   => 'upload error',
-            ),
-        );
+            ],
+        ];
     }
 }

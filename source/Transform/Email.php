@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Email type
  */
-
 class Email extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Email extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Email',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Email extends TransformAbstract
      *
      * @return string|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -39,14 +38,14 @@ class Email extends TransformAbstract
             $this->throwException($options, 'error');
 
         $options = array_replace(
-            array(
+            [
                 'check_dns'     => true,
                 'strict'        => true,
-            ),
+            ],
             $options
         );
 
-        $validators     = array();
+        $validators     = [];
 
         if ($options['strict'])
             $validators[] = new \Egulias\EmailValidator\Validation\RFCValidation();
@@ -68,13 +67,12 @@ class Email extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong email format',
-            ),
-        );
+            ],
+        ];
     }
 }

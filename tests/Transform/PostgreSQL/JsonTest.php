@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform\PostgreSQL;
+<?php
+
+namespace ApishkaTest\Transformer\Transform\PostgreSQL;
 
 use Apishka\Transformer\Transform\PostgreSQL\Json;
 
 /**
  * Json assert test
  */
-
 class JsonTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      *
      * @return Json
      */
-
     protected function prepareAssert()
     {
         return new Json();
@@ -22,23 +22,22 @@ class JsonTest extends \PHPUnit\Framework\TestCase
     /**
      * Test valid data
      */
-
     public function testValid()
     {
         $assert = $this->prepareAssert();
 
         $this->assertSame(
-            array('key' => 'value'),
-            $assert->process(json_encode(array('key' => 'value')))
+            ['key' => 'value'],
+            $assert->process(json_encode(['key' => 'value']))
         );
 
         $this->assertSame(
-            array('key' => 'value'),
-            $assert->process(array('key' => 'value'))
+            ['key' => 'value'],
+            $assert->process(['key' => 'value'])
         );
 
-        $test_obj = new class implements \JsonSerializable {
-            function jsonSerialize()
+        $test_obj = new class() implements \JsonSerializable {
+            public function jsonSerialize()
             {
                 return [];
             }
@@ -53,7 +52,6 @@ class JsonTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -68,7 +66,6 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testIncorrectJson()
     {
         $this->prepareAssert()->process('{dewwe=}');
@@ -80,7 +77,6 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testIncorrectType()
     {
         $this->prepareAssert()->process(STDOUT);
@@ -92,7 +88,6 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testIncorrectType2()
     {
         $this->prepareAssert()->process(2);
@@ -104,29 +99,27 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testIncorrectObject()
     {
-        $this->prepareAssert()->process(new class {});
+        $this->prepareAssert()->process(new class() {});
     }
 
     /**
      * Test object reference
      */
-
     public function testObjectReference()
     {
-        $test_obj1 = new class implements \JsonSerializable {
+        $test_obj1 = new class() implements \JsonSerializable {
             protected $a = 1;
-            function jsonSerialize()
+            public function jsonSerialize()
             {
                 return ['a' => $this->a];
             }
         };
 
-        $test_obj2 = new class implements \JsonSerializable {
+        $test_obj2 = new class() implements \JsonSerializable {
             protected $a = 1;
-            function jsonSerialize()
+            public function jsonSerialize()
             {
                 return ['a' => $this->a];
             }

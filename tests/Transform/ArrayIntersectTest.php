@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\ArrayIntersect;
 
 /**
  * Array key exists test
  */
-
 class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -15,8 +16,7 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      *
      * @return ArrayIntersect
      */
-
-    protected function prepareAssert(array $options = array())
+    protected function prepareAssert(array $options = [])
     {
         return new ArrayIntersect($options);
     }
@@ -24,19 +24,17 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
     /**
      * Test array
      */
-
     public function testArray()
     {
         $this->assertSame(
-            array(10),
-            $this->prepareAssert()->process(array(10), ['values' => [10]])
+            [10],
+            $this->prepareAssert()->process([10], ['values' => [10]])
         );
     }
 
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -55,7 +53,6 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      * @param mixed $value
      * @param array $values
      */
-
     public function testWrongValues($value, array $values)
     {
         $assert = $this->prepareAssert();
@@ -67,17 +64,16 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array(array(1), ['test']),
-            array(array(1.2), ['test']),
-            array(array(true), ['test']),
-            array(array('test'), ['test1']),
-            array(function () {}, ['test']),
-            array(new \StdClass(), ['test']),
-        );
+        return [
+            [[1], ['test']],
+            [[1.2], ['test']],
+            [[true], ['test']],
+            [['test'], ['test1']],
+            [function () {}, ['test']],
+            [new \StdClass(), ['test']],
+        ];
     }
 
     /**
@@ -88,7 +84,6 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      * @param mixed $value
      * @param array $values
      */
-
     public function testGoodValues($value, $values)
     {
         $assert = $this->prepareAssert();
@@ -103,15 +98,14 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function goodValuesProvider()
     {
-        return array(
-            array(array(1), ['1']),
-            array(array(1.2), ['1.2']),
-            array(array(true), ['1']),
-            array(array('test'), ['test']),
-            array(array('test'), function () {return array('test');}),
-        );
+        return [
+            [[1], ['1']],
+            [[1.2], ['1.2']],
+            [[true], ['1']],
+            [['test'], ['test']],
+            [['test'], function () {return ['test']; }],
+        ];
     }
 }

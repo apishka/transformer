@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\ArrayType;
 
 /**
  * Array type test
  */
-
 class ArrayTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return ArrayType
      */
-
     protected function prepareAssert()
     {
         return new ArrayType();
@@ -22,19 +22,17 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test array
      */
-
     public function testArray()
     {
         $this->assertSame(
-            array(1),
-            $this->prepareAssert()->process(array(1))
+            [1],
+            $this->prepareAssert()->process([1])
         );
     }
 
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -49,8 +47,8 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareAssert();
@@ -62,16 +60,15 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array(1),
-            array(1.2),
-            array(true),
-            array('test'),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            [1],
+            [1.2],
+            [true],
+            ['test'],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 }

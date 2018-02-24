@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Blank;
 
 /**
  * Blank sanitizer test
  */
-
 class BlankTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
      *
      * @return Blank
      */
-
     protected function prepareSanitizer()
     {
         return new Blank();
@@ -22,7 +22,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-
     public function testInteger()
     {
         $this->assertSame(
@@ -34,7 +33,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testString()
     {
         $this->assertSame(
@@ -46,7 +44,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -57,7 +54,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test false
      */
-
     public function testFalse()
     {
         $this->assertNull(
@@ -68,7 +64,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test empty string
      */
-
     public function testEmptyString()
     {
         $this->assertNull(
@@ -79,7 +74,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string with 0
      */
-
     public function testStringWithZero()
     {
         $this->assertSame(
@@ -91,7 +85,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test 0
      */
-
     public function testZero()
     {
         $this->assertSame(
@@ -103,7 +96,6 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testFloatZero()
     {
         $this->assertSame(

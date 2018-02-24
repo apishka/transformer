@@ -1,4 +1,6 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 use Carbon\Carbon;
@@ -6,13 +8,11 @@ use Carbon\Carbon;
 /**
  * Date time type abstract
  */
-
 abstract class DateTimeTypeAbstract extends TransformAbstract
 {
     /**
      * Patterns
      */
-
     const PATTERN_DATE = '(?P<year>\d{4})-(?P<month>\d{2})-(?P<day>\d{2})';
     const PATTERN_TIME = '(?P<hour>\d{2}):(?P<minute>\d{2})(?::(?P<second>\d{2})(?:\.(?P<microsecond>\d+))?)?';
 
@@ -24,8 +24,7 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return float|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         $options = array_replace(
             $this->getDefaultOptons(),
@@ -67,7 +66,7 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
                     throw new \InvalidArgumentException('Variable for "min" is not date');
 
                 if ($date->diffInSeconds($min, false) > 0)
-                    $this->throwException($options, 'error_max', array('date' => $options['min']));
+                    $this->throwException($options, 'error_max', ['date' => $options['min']]);
             }
 
             if ($options['max'])
@@ -85,7 +84,7 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
                     throw new \InvalidArgumentException('Variable for "max" is not date');
 
                 if ($date->diffInSeconds($max, false) < 0)
-                    $this->throwException($options, 'error_max', array('date' => $options['max']));
+                    $this->throwException($options, 'error_max', ['date' => $options['max']]);
             }
         }
 
@@ -99,7 +98,6 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return bool
      */
-
     protected function checkMatches($matches)
     {
         if (!$this->checkDate($matches['year'], $matches['month'], $matches['day']))
@@ -126,7 +124,6 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return bool
      */
-
     protected function checkDate($year, $month, $day)
     {
         return checkdate($month, $day, $year);
@@ -141,7 +138,6 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return bool
      */
-
     protected function checkTime($hour, $minute, $second)
     {
         return $hour >= 0 && $hour < 24 && $minute >= 0 && $minute < 60 && $second >= 0 && $second < 60;
@@ -152,7 +148,6 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return string
      */
-
     protected function getPattern()
     {
         return '#^' . static::PATTERN_DATE . ' ' . static::PATTERN_TIME . '$#';
@@ -163,14 +158,13 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultOptons()
     {
-        return array(
+        return [
             'allow' => [],
             'min'   => false,
             'max'   => false,
-        );
+        ];
     }
 
     /**
@@ -178,19 +172,18 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-            'error_min' => array(
+            ],
+            'error_min' => [
                 'message'   => 'cannot be after {date}',
-            ),
-            'error_max' => array(
+            ],
+            'error_max' => [
                 'message'   => 'cannot be before {date}',
-            ),
-        );
+            ],
+        ];
     }
 }

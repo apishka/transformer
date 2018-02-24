@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\NotNull;
 
 /**
  * Not null assert test
  */
-
 class NotNullTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
      *
      * @return NotNull
      */
-
     protected function prepareAssert()
     {
         return new NotNull();
@@ -22,7 +22,6 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-
     public function testInteger()
     {
         $this->assertSame(
@@ -34,7 +33,6 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testString()
     {
         $this->assertSame(
@@ -49,7 +47,6 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
-
     public function testNull()
     {
         $this->prepareAssert()->process(null);

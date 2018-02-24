@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Number\Between;
 
 /**
  * Length transform test
  */
-
 class BetweenTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return Lower
      */
-
     protected function prepareSanitizer()
     {
         return new Between();
@@ -22,7 +22,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -36,7 +35,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \InvalidArgumentException
      * @expectedExceptionMessage Not found "min" or "max" in options
      */
-
     public function testNoOptiopns()
     {
         $this->prepareSanitizer()->process(10);
@@ -51,7 +49,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider             providerTestGoodValues
      */
-
     public function testGoodValues($expected, $value, array $options)
     {
         $this->assertSame(
@@ -65,35 +62,34 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function providerTestGoodValues()
     {
-        return array(
-            array(
+        return [
+            [
                 2,
                 2,
-                array(
+                [
                     'min' => 0,
                     'max' => 5,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 2.0,
                 2.0,
-                array(
+                [
                     'min' => 0,
                     'max' => 5,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 '2.0',
                 '2.0',
-                array(
+                [
                     'min' => 0,
                     'max' => 5,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -107,7 +103,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      * @expectedExceptionMessageRegExp #min \d+#
      * @dataProvider                   providerTestBadMinValues
      */
-
     public function testBadMinValues($value, array $options)
     {
         $this->prepareSanitizer()->process($value, $options);
@@ -118,29 +113,28 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function providerTestBadMinValues()
     {
-        return array(
-            array(
+        return [
+            [
                 2,
-                array(
+                [
                     'min' => 5,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 3.0,
-                array(
+                [
                     'min' => 5,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 '4.0',
-                array(
+                [
                     'min' => 5,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -153,7 +147,6 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      * @expectedExceptionMessageRegExp #max \d+#
      * @dataProvider                   providerTestBadMaxValues
      */
-
     public function testBadMaxValues($value, array $options)
     {
         $this->prepareSanitizer()->process($value, $options);
@@ -164,29 +157,28 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function providerTestBadMaxValues()
     {
-        return array(
-            array(
+        return [
+            [
                 10,
-                array(
+                [
                     'max' => 3,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 10.0,
-                array(
+                [
                     'max' => 3,
-                ),
-            ),
-            array(
+                ],
+            ],
+            [
                 '10.0',
-                array(
+                [
                     'max' => 3,
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
     }
 
     /**
@@ -195,8 +187,8 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      * @dataProvider             providerTestWrongValues
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareSanitizer();
@@ -208,14 +200,13 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function providerTestWrongValues()
     {
-        return array(
-            array(array()),
-            array(STDOUT),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            [[]],
+            [STDOUT],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 }

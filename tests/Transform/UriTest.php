@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Uri;
 
 /**
  * Uri test
  */
-
 class UriTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
      *
      * @return Phone
      */
-
     protected function prepareAssert()
     {
         return new Uri();
@@ -22,7 +22,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -36,7 +35,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong uri format
      */
-
     public function testObject()
     {
         $this->prepareAssert()->process(new \StdClass());
@@ -48,10 +46,9 @@ class UriTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong uri format
      */
-
     public function testArray()
     {
-        $this->prepareAssert()->process(array(1));
+        $this->prepareAssert()->process([1]);
     }
 
     /**
@@ -60,7 +57,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong uri format
      */
-
     public function testBadUri()
     {
         $this->prepareAssert()->process('htt://example.com/');
@@ -69,7 +65,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple phone
      */
-
     public function testSimpleUri()
     {
         $this->assertSame(
@@ -81,7 +76,6 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple phone
      */
-
     public function testSimpleUriWithQueryString()
     {
         $this->assertSame(

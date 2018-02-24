@@ -1,9 +1,10 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 /**
  * Time type
  */
-
 class TimeType extends DateTimeTypeAbstract
 {
     /**
@@ -11,12 +12,11 @@ class TimeType extends DateTimeTypeAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Time',
-        );
+        ];
     }
 
     /**
@@ -26,7 +26,6 @@ class TimeType extends DateTimeTypeAbstract
      *
      * @return bool
      */
-
     protected function checkMatches($matches)
     {
         if (!isset($matches['second']))
@@ -43,7 +42,6 @@ class TimeType extends DateTimeTypeAbstract
      *
      * @return string
      */
-
     protected function getPattern()
     {
         return '#^' . static::PATTERN_TIME . '$#';

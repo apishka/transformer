@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * String type
  */
-
 class StringType extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class StringType extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/String',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class StringType extends TransformAbstract
      *
      * @return string|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -46,13 +45,12 @@ class StringType extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-        );
+            ],
+        ];
     }
 }

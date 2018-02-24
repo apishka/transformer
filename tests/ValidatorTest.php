@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer;
+<?php
+
+namespace ApishkaTest\Transformer;
 
 use Apishka\Transformer\Validator;
 
 /**
  * Validator test
  */
-
 class ValidatorTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
      *
      * @return int
      */
-
     protected function prepareValidator()
     {
         return new Validator();
@@ -22,7 +22,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test not null
      */
-
     public function testNotNull()
     {
         $this->assertSame(
@@ -42,7 +41,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
-
     public function testNull()
     {
         $this->prepareValidator()->validate(
@@ -59,7 +57,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Exception
      * @expectedExceptionMessage wrong value
      */
-
     public function testCallback()
     {
         $this->prepareValidator()->validate(
@@ -79,7 +76,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test callback with boolean condition
      */
-
     public function testCallbackWithBooleanCondition()
     {
         $this->assertSame(
@@ -102,7 +98,6 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test callback with function condition
      */
-
     public function testCallbackWithFunctionCondition()
     {
         $this->assertSame(

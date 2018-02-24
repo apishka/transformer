@@ -1,15 +1,15 @@
-<?php namespace Apishka\Transformer;
+<?php
+
+namespace Apishka\Transformer;
 
 /**
  * Validator
  */
-
 class Validator
 {
     /**
      * Traits
      */
-
     use \Apishka\EasyExtend\Helper\ByClassNameTrait;
     use \Apishka\Singleton\SingletonTrait;
 
@@ -18,12 +18,11 @@ class Validator
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'validator',
-        );
+        ];
     }
 
     /**
@@ -34,7 +33,6 @@ class Validator
      *
      * @return mixed
      */
-
     public function validate($value, $validations)
     {
         foreach ($validations as $validation => $options)

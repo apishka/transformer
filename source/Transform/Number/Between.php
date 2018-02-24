@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform\Number;
+<?php
+
+namespace Apishka\Transformer\Transform\Number;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Not blank
  */
-
 class Between extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Between extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Number/Between',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Between extends TransformAbstract
      *
      * @return mixed
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -55,19 +54,18 @@ class Between extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-            'error_min' => array(
+            ],
+            'error_min' => [
                 'message'   => 'min {count}',
-            ),
-            'error_max' => array(
+            ],
+            'error_max' => [
                 'message'   => 'max {count}',
-            ),
-        );
+            ],
+        ];
     }
 }

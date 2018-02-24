@@ -1,9 +1,10 @@
-<?php namespace Apishka\Transformer;
+<?php
+
+namespace Apishka\Transformer;
 
 /**
  * Transform abstract
  */
-
 abstract class TransformAbstract implements TransformInterface
 {
     /**
@@ -11,10 +12,9 @@ abstract class TransformAbstract implements TransformInterface
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array();
+        return [];
     }
 
     /**
@@ -24,7 +24,6 @@ abstract class TransformAbstract implements TransformInterface
      *
      * @return string
      */
-
     protected function getDefaultError($name)
     {
         $errors = $this->getDefaultErrors();
@@ -41,8 +40,7 @@ abstract class TransformAbstract implements TransformInterface
      * @param string $name
      * @param array  $params
      */
-
-    protected function throwException($options, $name, $params = array())
+    protected function throwException($options, $name, $params = [])
     {
         $error = (array_key_exists($name, $options))
             ? $options[$name]

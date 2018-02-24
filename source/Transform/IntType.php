@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Int type
  */
-
 class IntType extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class IntType extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Int',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class IntType extends TransformAbstract
      *
      * @return int|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -51,14 +50,13 @@ class IntType extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -69,15 +67,14 @@ class IntType extends TransformAbstract
      *
      * @return mixed
      */
-
-    protected function applyFilters($value, $options = array())
+    protected function applyFilters($value, $options = [])
     {
         if (!is_string($value) || (array_key_exists('apply_filters', $options) && !$options['apply_filters']))
             return $value;
 
-        $filters = array(
+        $filters = [
             '#\s+#',
-        );
+        ];
 
         return preg_replace($filters, '', $value);
     }

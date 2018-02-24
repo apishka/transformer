@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Not null
  */
-
 class NotNull extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class NotNull extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/NotNull',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class NotNull extends TransformAbstract
      *
      * @return mixed
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             $this->throwException($options, 'error');
@@ -43,13 +42,12 @@ class NotNull extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'cannot be empty',
-            ),
-        );
+            ],
+        ];
     }
 }

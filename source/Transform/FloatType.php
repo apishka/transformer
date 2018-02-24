@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Float type
  */
-
 class FloatType extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class FloatType extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Float',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class FloatType extends TransformAbstract
      *
      * @return float|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -42,11 +41,11 @@ class FloatType extends TransformAbstract
 
         if (!is_bool($value))
         {
-            $patterns = array(
+            $patterns = [
                 '#^[+-]?[0-9]+$#',
                 '#^[+-]?([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*)$#',
                 '#^[+-]?(([0-9]+|([0-9]*[\.][0-9]+)|([0-9]+[\.][0-9]*))[eE][+-]?[0-9]+)$#',
-            );
+            ];
 
             $is_float = false;
             foreach ($patterns as $pattern)
@@ -70,14 +69,13 @@ class FloatType extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -88,15 +86,14 @@ class FloatType extends TransformAbstract
      *
      * @return mixed
      */
-
-    protected function applyFilters($value, $options = array())
+    protected function applyFilters($value, $options = [])
     {
         if (!is_string($value) || (array_key_exists('apply_filters', $options) && !$options['apply_filters']))
             return $value;
 
-        $filters = array(
+        $filters = [
             '#\s+#',
-        );
+        ];
 
         return preg_replace($filters, '', $value);
     }

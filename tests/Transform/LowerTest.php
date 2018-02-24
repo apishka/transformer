@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Lower;
 
 /**
  * Lower sanitizer test
  */
-
 class LowerTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class LowerTest extends \PHPUnit\Framework\TestCase
      *
      * @return Lower
      */
-
     protected function prepareSanitizer()
     {
         return new Lower();
@@ -22,7 +22,6 @@ class LowerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -33,7 +32,6 @@ class LowerTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testString()
     {
         $this->assertSame(
@@ -58,8 +56,8 @@ class LowerTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareSanitizer();
@@ -71,14 +69,13 @@ class LowerTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array(array()),
-            array(STDOUT),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            [[]],
+            [STDOUT],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 }

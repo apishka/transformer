@@ -1,9 +1,10 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 /**
  * Date type
  */
-
 class DateType extends DateTimeTypeAbstract
 {
     /**
@@ -11,12 +12,11 @@ class DateType extends DateTimeTypeAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Date',
-        );
+        ];
     }
 
     /**
@@ -26,7 +26,6 @@ class DateType extends DateTimeTypeAbstract
      *
      * @return bool
      */
-
     protected function checkMatches($matches)
     {
         return $this->checkDate($matches['year'], $matches['month'], $matches['day']);
@@ -37,7 +36,6 @@ class DateType extends DateTimeTypeAbstract
      *
      * @return string
      */
-
     protected function getPattern()
     {
         return '#^' . static::PATTERN_DATE . '$#';

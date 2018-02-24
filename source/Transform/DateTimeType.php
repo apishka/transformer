@@ -1,9 +1,10 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 /**
  * Date time type
  */
-
 class DateTimeType extends DateTimeTypeAbstract
 {
     /**
@@ -11,11 +12,10 @@ class DateTimeType extends DateTimeTypeAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/DateTime',
-        );
+        ];
     }
 }

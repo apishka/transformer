@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer;
+<?php
+
+namespace Apishka\Transformer;
 
 /**
  * Exception
  *
  * @easy-extend-base
  */
-
 class FriendlyException extends Exception
 {
     /**
@@ -13,7 +14,6 @@ class FriendlyException extends Exception
      *
      * @var array
      */
-
     private $_error_data = null;
 
     /**
@@ -21,13 +21,11 @@ class FriendlyException extends Exception
      *
      * @var array
      */
-
     private $_error_params = null;
 
     /**
      * Traits
      */
-
     use \Apishka\EasyExtend\Helper\ByClassNameTrait;
 
     /**
@@ -36,8 +34,7 @@ class FriendlyException extends Exception
      * @param array $error
      * @param array $params
      */
-
-    public function __construct($error, $params = array())
+    public function __construct($error, $params = [])
     {
         $this->_error_data   = $error;
         $this->_error_params = $params;
@@ -53,7 +50,6 @@ class FriendlyException extends Exception
      *
      * @return array
      */
-
     public function getErrorData()
     {
         return $this->_error_data;
@@ -64,7 +60,6 @@ class FriendlyException extends Exception
      *
      * @return array
      */
-
     public function getErrorParams()
     {
         return $this->_error_params;
@@ -75,7 +70,6 @@ class FriendlyException extends Exception
      *
      * @return string|null
      */
-
     public function getErrorDataMessageClass()
     {
         if (array_key_exists('message_class', $this->getErrorParams()))
@@ -92,7 +86,6 @@ class FriendlyException extends Exception
      *
      * @return string
      */
-
     protected function renderMessage($error, $params)
     {
         $message = $error['message'];
@@ -114,7 +107,6 @@ class FriendlyException extends Exception
      *
      * @return string
      */
-
     protected function renderCode($error, $params)
     {
         if (array_key_exists('code', $error))

@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Trim;
 
 /**
  * Trim sanitizer test
  */
-
 class TrimTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
      *
      * @return Trim
      */
-
     protected function prepareSanitizer()
     {
         return new Trim();
@@ -22,7 +22,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-
     public function testInteger()
     {
         $this->assertSame(
@@ -34,7 +33,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -48,7 +46,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testObject()
     {
         $this->prepareSanitizer()->process(new \StdClass());
@@ -60,16 +57,14 @@ class TrimTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
      */
-
     public function testArray()
     {
-        $this->prepareSanitizer()->process(array(1));
+        $this->prepareSanitizer()->process([1]);
     }
 
     /**
      * Test right trim
      */
-
     public function testRightTrim()
     {
         $this->assertSame(
@@ -81,7 +76,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test left trim
      */
-
     public function testLeftTrim()
     {
         $this->assertSame(
@@ -93,7 +87,6 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test left trim
      */
-
     public function testTrim()
     {
         $this->assertSame(

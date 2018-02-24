@@ -22,5 +22,5 @@ interface TransformInterface
      *
      * @return mixed
      */
-    public function process($value, array $options = array());
+    public function process($value, array $options = []);
 }

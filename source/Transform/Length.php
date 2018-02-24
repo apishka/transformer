@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Not blank
  */
-
 class Length extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Length extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Length',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Length extends TransformAbstract
      *
      * @return mixed
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -60,19 +59,18 @@ class Length extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-            'error_min' => array(
+            ],
+            'error_min' => [
                 'message'   => 'min {count} characters',
-            ),
-            'error_max' => array(
+            ],
+            'error_max' => [
                 'message'   => 'max {count} characters',
-            ),
-        );
+            ],
+        ];
     }
 }

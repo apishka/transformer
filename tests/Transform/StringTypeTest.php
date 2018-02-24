@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\StringType;
 
 /**
  * String type assert test
  */
-
 class StringTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class StringTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return StringType
      */
-
     protected function prepareAssert()
     {
         return new StringType();
@@ -22,7 +22,6 @@ class StringTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testString()
     {
         $this->assertSame(
@@ -44,7 +43,6 @@ class StringTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -59,8 +57,8 @@ class StringTypeTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareAssert();
@@ -72,13 +70,12 @@ class StringTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array(array()),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            [[]],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 }

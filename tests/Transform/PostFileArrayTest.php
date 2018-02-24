@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\PostFileArray;
 
 /**
  * Post file array assert test
  */
-
 class PostFileArrayTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
      *
      * @return PostFileArray
      */
-
     protected function prepareAssert()
     {
         return new PostFileArray();
@@ -22,19 +22,17 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
     /**
      * Test valid data
      */
-
     public function testValidData()
     {
         $this->assertSame(
-            array('error' => UPLOAD_ERR_OK),
-            $this->prepareAssert()->process(array('error' => UPLOAD_ERR_OK))
+            ['error' => UPLOAD_ERR_OK],
+            $this->prepareAssert()->process(['error' => UPLOAD_ERR_OK])
         );
     }
 
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -49,8 +47,8 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareAssert();
@@ -63,11 +61,10 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  upload
      */
-
     public function testEmptyUpload()
     {
         $assert = $this->prepareAssert();
-        $assert->process(array());
+        $assert->process([]);
     }
 
     /**
@@ -76,11 +73,10 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage  upload
      */
-
     public function testWrongUpload()
     {
         $assert = $this->prepareAssert();
-        $assert->process(array('error' => !UPLOAD_ERR_OK));
+        $assert->process(['error' => !UPLOAD_ERR_OK]);
     }
 
     /**
@@ -88,14 +84,13 @@ class PostFileArrayTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array('test'),
-            array(new \StdClass()),
-            array(true),
-            array(2),
-        );
+        return [
+            ['test'],
+            [new \StdClass()],
+            [true],
+            [2],
+        ];
     }
 }

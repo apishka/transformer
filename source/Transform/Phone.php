@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Phone type
  */
-
 class Phone extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Phone extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Phone',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Phone extends TransformAbstract
      *
      * @return string|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -73,7 +72,6 @@ class Phone extends TransformAbstract
      *
      * @return \libphonenumber\PhoneNumber
      */
-
     protected function getPhone($value, $options, &$type_id)
     {
         $util = \libphonenumber\PhoneNumberUtil::getInstance();
@@ -86,10 +84,10 @@ class Phone extends TransformAbstract
             return $phone;
 
         $values = array_unique(
-            array(
+            [
                 !preg_match('#^\+#', $value) ? '+' . $value : $value,
                 $value,
-            )
+            ]
         );
 
         foreach ($values as $value)
@@ -111,17 +109,16 @@ class Phone extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong phone format',
-            ),
-            'wrong_type' => array(
+            ],
+            'wrong_type' => [
                 'message'   => 'wrong phone type',
-            ),
-        );
+            ],
+        ];
     }
 
     /**
@@ -131,7 +128,6 @@ class Phone extends TransformAbstract
      *
      * @return string
      */
-
     protected function getDefaultCountryCode($options)
     {
         if (!isset($options['country_code']))
@@ -147,7 +143,6 @@ class Phone extends TransformAbstract
      *
      * @return string
      */
-
     protected function getDefaultPhoneFormat($options)
     {
         if (!isset($options['phone_format']))

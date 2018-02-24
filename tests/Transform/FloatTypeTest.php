@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\FloatType;
 
 /**
  * Float type assert test
  */
-
 class FloatTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return FloatType
      */
-
     protected function prepareAssert()
     {
         return new FloatType();
@@ -22,7 +22,6 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test float
      */
-
     public function testFloat()
     {
         $this->assertSame(
@@ -39,7 +38,6 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -54,8 +52,8 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareAssert();
@@ -67,20 +65,18 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array('test'),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            ['test'],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 
     /**
      * Test with filters
      */
-
     public function testWithFilters()
     {
         $this->assertSame(
@@ -92,16 +88,15 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test without filters
      */
-
     public function testWithoutFilters()
     {
         $this->assertSame(
             1.0,
             $this->prepareAssert()->process(
                 '1 123 123.123',
-                array(
+                [
                     'apply_filters' => false,
-                )
+                ]
             )
         );
     }

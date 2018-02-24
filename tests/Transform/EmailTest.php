@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\Email;
 
 /**
  * Email assert test
  */
-
 class EmailTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class EmailTest extends \PHPUnit\Framework\TestCase
      *
      * @return Email
      */
-
     protected function prepareAssert()
     {
         return new Email();
@@ -22,7 +22,6 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertNull(
@@ -36,7 +35,6 @@ class EmailTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong email format
      */
-
     public function testObject()
     {
         $this->prepareAssert()->process(new \StdClass());
@@ -48,25 +46,23 @@ class EmailTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong email format
      */
-
     public function testArray()
     {
-        $this->prepareAssert()->process(array(1));
+        $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test email
      */
-
     public function testSimpleEmail()
     {
         $this->assertSame(
             'test@example.com',
             $this->prepareAssert()->process(
                 'test@example.com',
-                array(
+                [
                     'check_dns'     => false,
-                )
+                ]
             )
         );
     }
@@ -74,16 +70,15 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     /**
      * Test local email
      */
-
     public function testLocalEmail()
     {
         $this->assertSame(
             'test@example',
             $this->prepareAssert()->process(
                 'test@example',
-                array(
+                [
                     'check_dns'     => false,
-                )
+                ]
             )
         );
     }
@@ -94,14 +89,13 @@ class EmailTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong email format
      */
-
     public function testInvalidEmail()
     {
         $this->prepareAssert()->process(
             'test@',
-            array(
+            [
                 'check_dns'     => false,
-            )
+            ]
         );
     }
 }

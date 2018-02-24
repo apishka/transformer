@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Uri type
  */
-
 class Uri extends TransformAbstract
 {
     /**
@@ -15,7 +16,6 @@ class Uri extends TransformAbstract
      *
      * @var string
      */
-
     protected function getPattern()
     {
         return '~^
@@ -40,12 +40,11 @@ class Uri extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Uri',
-        );
+        ];
     }
 
     /**
@@ -56,8 +55,7 @@ class Uri extends TransformAbstract
      *
      * @return string|null
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -66,10 +64,10 @@ class Uri extends TransformAbstract
             $this->throwException($options, 'error');
 
         $options = array_replace(
-            array(
+            [
                 'protocols' => ['http', 'https', 'ftp'],
                 'check_dns' => false,
-            ),
+            ],
             $options
         );
 
@@ -99,7 +97,6 @@ class Uri extends TransformAbstract
      *
      * @return array
      */
-
     protected function getAvailableProtocols($options)
     {
         return $options['protocols'];
@@ -110,13 +107,12 @@ class Uri extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong uri format',
-            ),
-        );
+            ],
+        ];
     }
 }

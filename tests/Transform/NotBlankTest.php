@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\NotBlank;
 
 /**
  * Not blank assert test
  */
-
 class NotBlankTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
      *
      * @return NotBlank
      */
-
     protected function prepareAssert()
     {
         return new NotBlank();
@@ -22,7 +22,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-
     public function testInteger()
     {
         $this->assertSame(
@@ -34,7 +33,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-
     public function testString()
     {
         $this->assertSame(
@@ -49,7 +47,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
-
     public function testNull()
     {
         $this->prepareAssert()->process(null);
@@ -58,7 +55,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test object
      */
-
     public function testObject()
     {
         $std_class = new \StdClass();
@@ -72,19 +68,17 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test object
      */
-
     public function testArray()
     {
         $this->assertSame(
-            array(1),
-            $this->prepareAssert()->process(array(1))
+            [1],
+            $this->prepareAssert()->process([1])
         );
     }
 
     /**
      * Test zero
      */
-
     public function testZero()
     {
         $this->assertSame(
@@ -96,7 +90,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string with zero
      */
-
     public function testStringWithZero()
     {
         $this->assertSame(
@@ -108,7 +101,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test float with zero
      */
-
     public function testFloatWithZero()
     {
         $this->assertSame(
@@ -123,7 +115,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
-
     public function testFalse()
     {
         $this->prepareAssert()->process(false);
@@ -135,7 +126,6 @@ class NotBlankTest extends \PHPUnit\Framework\TestCase
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage cannot be empty
      */
-
     public function testEmptyString()
     {
         $this->prepareAssert()->process('');

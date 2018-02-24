@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform;
+<?php
+
+namespace Apishka\Transformer\Transform;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Blank
  */
-
 class Blank extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Blank extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/Blank',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Blank extends TransformAbstract
      *
      * @return mixed
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if (empty($value) && $value !== '0' && $value !== 0 && $value !== .0)
             return;

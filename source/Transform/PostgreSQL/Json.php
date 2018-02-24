@@ -1,11 +1,12 @@
-<?php namespace Apishka\Transformer\Transform\PostgreSQL;
+<?php
+
+namespace Apishka\Transformer\Transform\PostgreSQL;
 
 use Apishka\Transformer\TransformAbstract;
 
 /**
  * Json type
  */
-
 class Json extends TransformAbstract
 {
     /**
@@ -13,12 +14,11 @@ class Json extends TransformAbstract
      *
      * @return array
      */
-
     public function getSupportedNames()
     {
-        return array(
+        return [
             'Transform/PostgreSQL/Json',
-        );
+        ];
     }
 
     /**
@@ -29,8 +29,7 @@ class Json extends TransformAbstract
      *
      * @return string|null|\JsonSerializable|array
      */
-
-    public function process($value, array $options = array())
+    public function process($value, array $options = [])
     {
         if ($value === null)
             return;
@@ -66,13 +65,12 @@ class Json extends TransformAbstract
      *
      * @return array
      */
-
     protected function getDefaultErrors()
     {
-        return array(
-            'error' => array(
+        return [
+            'error' => [
                 'message'   => 'wrong input format',
-            ),
-        );
+            ],
+        ];
     }
 }

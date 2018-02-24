@@ -1,11 +1,12 @@
-<?php namespace ApishkaTest\Transformer\Transform;
+<?php
+
+namespace ApishkaTest\Transformer\Transform;
 
 use Apishka\Transformer\Transform\BoolType;
 
 /**
  * Bool type assert test
  */
-
 class BoolTypeTest extends \PHPUnit\Framework\TestCase
 {
     /**
@@ -13,7 +14,6 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return BoolType
      */
-
     protected function prepareAssert()
     {
         return new BoolType();
@@ -22,7 +22,6 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test valid data
      */
-
     public function testValid()
     {
         $this->assertSame(
@@ -54,7 +53,6 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-
     public function testNull()
     {
         $this->assertSame(
@@ -69,8 +67,8 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             wrongValuesProvider
      * @expectedException        \Apishka\Transformer\Exception
      * @expectedExceptionMessage wrong input format
+     * @param mixed $wrong_type
      */
-
     public function testWrongValues($wrong_type)
     {
         $assert = $this->prepareAssert();
@@ -82,13 +80,12 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-
     public function wrongValuesProvider()
     {
-        return array(
-            array(STDOUT),
-            array(function () {}),
-            array(new \StdClass()),
-        );
+        return [
+            [STDOUT],
+            [function () {}],
+            [new \StdClass()],
+        ];
     }
 }
