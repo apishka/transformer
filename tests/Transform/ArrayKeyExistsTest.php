@@ -11,7 +11,7 @@ class ArrayKeyExistsTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * Prepare assert
-
+     *
      * @return ArrayKeyExists
      */
     protected function prepareAssert(): ArrayKeyExists

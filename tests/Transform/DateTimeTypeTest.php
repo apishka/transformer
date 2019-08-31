@@ -14,7 +14,7 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return DateTimeType
      */
-    protected function prepareAssert():DateTimeType
+    protected function prepareAssert(): DateTimeType
     {
         return new DateTimeType();
     }
