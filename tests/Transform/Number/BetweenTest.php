@@ -12,9 +12,9 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return Lower
+     * @return Between
      */
-    protected function prepareSanitizer()
+    protected function prepareSanitizer(): Between
     {
         return new Between();
     }
@@ -22,7 +22,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process(null)
@@ -31,12 +31,12 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test no options
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Not found "min" or "max" in options
      */
-    public function testNoOptiopns()
+    public function testNoOptiopns(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Not found "min" or "max" in options');
+
         $this->prepareSanitizer()->process(10);
     }
 
@@ -49,7 +49,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider             providerTestGoodValues
      */
-    public function testGoodValues($expected, $value, array $options)
+    public function testGoodValues($expected, $value, array $options): void
     {
         $this->assertSame(
             $expected,
@@ -62,7 +62,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestGoodValues()
+    public function providerTestGoodValues(): array
     {
         return [
             [
@@ -95,16 +95,16 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
     /**
      * Test bad min values
      *
-     * @param mixed $expected
      * @param mixed $value
      * @param array $options
      *
-     * @expectedException              \Apishka\Transformer\Exception
-     * @expectedExceptionMessageRegExp #min \d+#
      * @dataProvider                   providerTestBadMinValues
      */
-    public function testBadMinValues($value, array $options)
+    public function testBadMinValues($value, array $options): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessageRegExp('#min \d+#');
+
         $this->prepareSanitizer()->process($value, $options);
     }
 
@@ -113,7 +113,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestBadMinValues()
+    public function providerTestBadMinValues(): array
     {
         return [
             [
@@ -143,12 +143,13 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      * @param mixed $value
      * @param array $options
      *
-     * @expectedException              \Apishka\Transformer\Exception
-     * @expectedExceptionMessageRegExp #max \d+#
      * @dataProvider                   providerTestBadMaxValues
      */
-    public function testBadMaxValues($value, array $options)
+    public function testBadMaxValues($value, array $options): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessageRegExp('#max \d+#');
+
         $this->prepareSanitizer()->process($value, $options);
     }
 
@@ -157,7 +158,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestBadMaxValues()
+    public function providerTestBadMaxValues(): array
     {
         return [
             [
@@ -184,13 +185,14 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
     /**
      * Test wrong values
      *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @dataProvider             providerTestWrongValues
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareSanitizer();
         $assert->process($wrong_type);
     }
@@ -200,7 +202,7 @@ class BetweenTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestWrongValues()
+    public function providerTestWrongValues(): array
     {
         return [
             [[]],

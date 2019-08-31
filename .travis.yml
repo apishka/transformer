@@ -1,14 +1,15 @@
 language: php
 
 php:
-  - 7.1
-  - 7.2
+  - '7.2'
+  - '7.3'
+  - '7.4'
 
 before_install:
   - composer self-update
 
 install:
-  - composer install --no-interaction --prefer-source
+  - composer install --no-interaction
 
 script:
-  - php ./vendor/bin/phpunit -c phpunit.sample.xml
+  - php ./vendor/bin/phpunit

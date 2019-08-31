@@ -14,7 +14,7 @@ class JsonTest extends \PHPUnit\Framework\TestCase
      *
      * @return Json
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): Json
     {
         return new Json();
     }
@@ -22,7 +22,7 @@ class JsonTest extends \PHPUnit\Framework\TestCase
     /**
      * Test valid data
      */
-    public function testValid()
+    public function testValid(): void
     {
         $assert = $this->prepareAssert();
 
@@ -52,62 +52,61 @@ class JsonTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->prepareAssert()->process(null)
         );
     }
 
     /**
      * Test incorrect json string
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testIncorrectJson()
+    public function testIncorrectJson(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('{dewwe=}');
     }
 
     /**
      * Test incorrect json string
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testIncorrectType()
+    public function testIncorrectType(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(STDOUT);
     }
 
     /**
      * Test incorrect json string
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testIncorrectType2()
+    public function testIncorrectType2(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(2);
     }
 
     /**
      * Test incorrect json string
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
     public function testIncorrectObject()
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(new class() {});
     }
 
     /**
      * Test object reference
      */
-    public function testObjectReference()
+    public function testObjectReference(): void
     {
         $test_obj1 = new class() implements \JsonSerializable {
             protected $a = 1;

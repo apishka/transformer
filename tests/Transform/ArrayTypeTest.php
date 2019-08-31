@@ -14,7 +14,7 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return ArrayType
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): ArrayType
     {
         return new ArrayType();
     }
@@ -22,7 +22,7 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test array
      */
-    public function testArray()
+    public function testArray(): void
     {
         $this->assertSame(
             [1],
@@ -33,10 +33,9 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->prepareAssert()->process(null)
         );
     }
@@ -45,12 +44,13 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      * Test wrong types
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareAssert();
         $assert->process($wrong_type);
     }
@@ -60,7 +60,7 @@ class ArrayTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             [1],

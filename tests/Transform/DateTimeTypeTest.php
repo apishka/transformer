@@ -14,7 +14,7 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return DateTimeType
      */
-    protected function prepareAssert()
+    protected function prepareAssert():DateTimeType
     {
         return new DateTimeType();
     }
@@ -22,7 +22,7 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -31,30 +31,31 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test allow
      */
-    public function testAllow()
+    public function testAllow(): void
     {
         $this->assertSame(
             'now',
@@ -69,34 +70,34 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad format date
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testBadFormatDate()
+    public function testBadFormatDate(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('10-03-1987 10:20:30');
     }
 
     /**
      * Test not existent date
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testNotExistentDate()
+    public function testNotExistentDate(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('2001-02-29 10:20:30');
     }
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Variable for "min" is not date
      */
-    public function testBadMinOption()
+    public function testBadMinOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Variable for "min" is not date');
+
         $this->prepareAssert()->process(
             '2016-01-01 10:20:30',
             [
@@ -107,11 +108,11 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \Exception
      */
-    public function testWrongMinOption()
+    public function testWrongMinOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '2016-01-01 10:20:30',
             [
@@ -123,7 +124,7 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test min correct
      */
-    public function testMinCorrect()
+    public function testMinCorrect(): void
     {
         $this->assertSame(
             '2015-01-02 10:20:30',
@@ -138,12 +139,12 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test min less
-     *
-     * @expectedException        \Apishka\Transformer\FriendlyException
-     * @expectedExceptionMessage cannot be before 2015-01-02
      */
-    public function testMinLess()
+    public function testMinLess(): void
     {
+        $this->expectException(\Apishka\Transformer\FriendlyException::class);
+        $this->expectExceptionMessage('cannot be before 2015-01-02');
+
         $this->prepareAssert()->process(
             '2015-01-01 10:20:30',
             [
@@ -154,12 +155,12 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad max option
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Variable for "max" is not date
      */
-    public function testBadMaxOption()
+    public function testBadMaxOption(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Variable for "max" is not date');
+
         $this->prepareAssert()->process(
             '2016-01-01 10:20:30',
             [
@@ -170,11 +171,11 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \Exception
      */
-    public function testWrongMaxOption()
+    public function testWrongMaxOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '2016-01-01 10:20:30',
             [
@@ -186,7 +187,7 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test max correct
      */
-    public function testMaxCorrect()
+    public function testMaxCorrect(): void
     {
         $this->assertSame(
             '2015-01-01 10:20:30',
@@ -201,12 +202,12 @@ class DateTimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test min more
-     *
-     * @expectedException        \Apishka\Transformer\FriendlyException
-     * @expectedExceptionMessage cannot be before 2015-01-01
      */
-    public function testMinMore()
+    public function testMinMore(): void
     {
+        $this->expectException(\Apishka\Transformer\FriendlyException::class);
+        $this->expectExceptionMessage('cannot be before 2015-01-01');
+
         $this->prepareAssert()->process(
             '2015-01-02 10:20:30',
             [

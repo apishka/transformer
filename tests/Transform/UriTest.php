@@ -12,9 +12,9 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return Phone
+     * @return Uri
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): Uri
     {
         return new Uri();
     }
@@ -22,7 +22,7 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -31,41 +31,41 @@ class UriTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong uri format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong uri format');
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong uri format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong uri format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test simple phone
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong uri format
      */
-    public function testBadUri()
+    public function testBadUri(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong uri format');
+
         $this->prepareAssert()->process('htt://example.com/');
     }
 
     /**
      * Test simple phone
      */
-    public function testSimpleUri()
+    public function testSimpleUri(): void
     {
         $this->assertSame(
             'http://example.com/',
@@ -76,7 +76,7 @@ class UriTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple phone
      */
-    public function testSimpleUriWithQueryString()
+    public function testSimpleUriWithQueryString(): void
     {
         $this->assertSame(
             'http://example.com/some/data?test&xx=aaa',

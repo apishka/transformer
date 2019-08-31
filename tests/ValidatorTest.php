@@ -12,9 +12,9 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return int
+     * @return Validator
      */
-    protected function prepareValidator()
+    protected function prepareValidator(): Validator
     {
         return new Validator();
     }
@@ -22,7 +22,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test not null
      */
-    public function testNotNull()
+    public function testNotNull(): void
     {
         $this->assertSame(
             10,
@@ -37,12 +37,12 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test null
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage cannot be empty
      */
-    public function testNull()
+    public function testNull(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('cannot be empty');
+
         $this->prepareValidator()->validate(
             null,
             [
@@ -53,12 +53,12 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test callback
-     *
-     * @expectedException        \Exception
-     * @expectedExceptionMessage wrong value
      */
-    public function testCallback()
+    public function testCallback(): void
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('wrong value');
+
         $this->prepareValidator()->validate(
             'test',
             [
@@ -76,7 +76,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test callback with boolean condition
      */
-    public function testCallbackWithBooleanCondition()
+    public function testCallbackWithBooleanCondition(): void
     {
         $this->assertSame(
             'test',
@@ -98,7 +98,7 @@ class ValidatorTest extends \PHPUnit\Framework\TestCase
     /**
      * Test callback with function condition
      */
-    public function testCallbackWithFunctionCondition()
+    public function testCallbackWithFunctionCondition(): void
     {
         $this->assertSame(
             'test',

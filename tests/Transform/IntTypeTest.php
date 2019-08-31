@@ -12,9 +12,9 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return int
+     * @return IntType
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): IntType
     {
         return new IntType();
     }
@@ -22,7 +22,7 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-    public function testInteger()
+    public function testInteger(): void
     {
         $this->assertSame(
             10,
@@ -33,7 +33,7 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test float
      */
-    public function testFloat()
+    public function testFloat(): void
     {
         $this->assertSame(
             0,
@@ -44,7 +44,7 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-    public function testString()
+    public function testString(): void
     {
         $this->assertSame(
             10,
@@ -55,7 +55,7 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -64,30 +64,30 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test negative string
      */
-    public function testNegativeString()
+    public function testNegativeString(): void
     {
         $this->assertSame(
             -10,
@@ -97,19 +97,19 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad string
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testBadString()
+    public function testBadString(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('123abc');
     }
 
     /**
      * Test filters
      */
-    public function testFilters()
+    public function testFilters(): void
     {
         $this->assertSame(
             1123123,
@@ -119,12 +119,12 @@ class IntTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test without filters
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testWithoutFilters()
+    public function testWithoutFilters(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(
             '1 123 123',
             [

@@ -12,9 +12,9 @@ class LengthTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return Lower
+     * @return Length
      */
-    protected function prepareSanitizer()
+    protected function prepareSanitizer(): Length
     {
         return new Length();
     }
@@ -22,7 +22,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process(null)
@@ -31,12 +31,12 @@ class LengthTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test no options
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Not found "min" or "max" in options
      */
-    public function testNoOptiopns()
+    public function testNoOptiopns(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Not found "min" or "max" in options');
+
         $this->prepareSanitizer()->process(10);
     }
 
@@ -49,7 +49,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      *
      * @dataProvider             providerTestGoodValues
      */
-    public function testGoodValues($expected, $value, array $options)
+    public function testGoodValues($expected, $value, array $options): void
     {
         $this->assertSame(
             $expected,
@@ -62,7 +62,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestGoodValues()
+    public function providerTestGoodValues(): array
     {
         return [
             [
@@ -98,13 +98,13 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      * @param mixed $expected
      * @param mixed $value
      * @param array $options
-     *
-     * @expectedException              \Apishka\Transformer\Exception
-     * @expectedExceptionMessageRegExp #min \d+ characters#
-     * @dataProvider                   badMinValuesProvider
+     * @dataProvider badMinValuesProvider
      */
-    public function testBadMinValues($expected, $value, array $options)
+    public function testBadMinValues($expected, $value, array $options): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessageRegExp('#min \d+ characters#');
+
         $this->assertSame(
             $expected,
             $this->prepareSanitizer()->process($value, $options)
@@ -116,7 +116,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function badMinValuesProvider()
+    public function badMinValuesProvider(): array
     {
         return [
             [
@@ -149,13 +149,13 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      * @param mixed $expected
      * @param mixed $value
      * @param array $options
-     *
-     * @expectedException              \Apishka\Transformer\Exception
-     * @expectedExceptionMessageRegExp #max \d+ characters#
-     * @dataProvider                   badMaxValuesProvider
+     * @dataProvider badMaxValuesProvider
      */
-    public function testBadMaxValues($expected, $value, array $options)
+    public function testBadMaxValues($expected, $value, array $options): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessageRegExp('#max \d+ characters#');
+
         $this->assertSame(
             $expected,
             $this->prepareSanitizer()->process($value, $options)
@@ -167,7 +167,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function badMaxValuesProvider()
+    public function badMaxValuesProvider(): array
     {
         return [
             [
@@ -198,12 +198,13 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareSanitizer();
         $assert->process($wrong_type);
     }
@@ -213,7 +214,7 @@ class LengthTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             [[]],

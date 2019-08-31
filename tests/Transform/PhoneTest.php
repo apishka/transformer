@@ -14,7 +14,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
      *
      * @return Phone
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): Phone
     {
         return new Phone();
     }
@@ -22,7 +22,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -31,34 +31,34 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone format');
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test empty country code
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage `country_code` must be defined in options
      */
-    public function testEmptyCountryCode()
+    public function testEmptyCountryCode(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('`country_code` must be defined in options');
+
         $this->prepareAssert()->process(
             '+79161234567'
         );
@@ -67,7 +67,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple phone
      */
-    public function testSimplePhone()
+    public function testSimplePhone(): void
     {
         $this->assertSame(
             '+79161234567',
@@ -83,7 +83,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test simple phone
      */
-    public function testSimplePhoneWithoutPlus()
+    public function testSimplePhoneWithoutPlus(): void
     {
         $this->assertSame(
             '+79161234567',
@@ -99,7 +99,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test another phone format
      */
-    public function testAnotherPhoneFormat()
+    public function testAnotherPhoneFormat(): void
     {
         $this->assertSame(
             '+7 916 123-45-67',
@@ -117,13 +117,14 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
      * Test simple phone
      *
      * @dataProvider             providerNotValidPhone
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone format
      * @param mixed $phone
      * @param mixed $country_code
      */
-    public function testNotValidPhone($phone, $country_code)
+    public function testNotValidPhone($phone, $country_code): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone format');
+
         $this->prepareAssert()->process(
             $phone,
             [
@@ -137,7 +138,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerNotValidPhone()
+    public function providerNotValidPhone(): array
     {
         return [
             ['some text', 'RU'],
@@ -149,7 +150,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test toll free number
      */
-    public function testTollFreeNumber()
+    public function testTollFreeNumber(): void
     {
         $this->assertSame(
             '8003838',
@@ -165,7 +166,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test uan number
      */
-    public function testUanNumber()
+    public function testUanNumber(): void
     {
         $this->assertSame(
             '+971600544000',
@@ -180,12 +181,12 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad toll free number
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone format
      */
-    public function testBadTollFreeNumber()
+    public function testBadTollFreeNumber(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone format');
+
         $this->prepareAssert()->process(
             '+800(38-38)',
             [
@@ -197,7 +198,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test toll free number with letters
      */
-    public function testTollFreeNumberWithLetters()
+    public function testTollFreeNumberWithLetters(): void
     {
         $this->assertSame(
             '8003838',
@@ -213,7 +214,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test short phone
      */
-    public function testShortPhone()
+    public function testShortPhone(): void
     {
         $this->assertSame(
             '+971501234567',
@@ -228,12 +229,12 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad phone
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone format
      */
-    public function testBadPhone()
+    public function testBadPhone(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone format');
+
         $this->prepareAssert()->process(
             '123456789012345789',
             [
@@ -245,7 +246,7 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
     /**
      * Test toll free number
      */
-    public function testValidPhoneType()
+    public function testValidPhoneType(): void
     {
         $this->assertSame(
             '+971501115599',
@@ -263,12 +264,12 @@ class PhoneTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test toll free number
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong phone type
      */
-    public function testNotValidPhoneType()
+    public function testNotValidPhoneType(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong phone type');
+
         $this->assertSame(
             '+971501115599',
             $this->prepareAssert()->process(

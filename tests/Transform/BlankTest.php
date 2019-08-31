@@ -14,7 +14,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
      *
      * @return Blank
      */
-    protected function prepareSanitizer()
+    protected function prepareSanitizer(): Blank
     {
         return new Blank();
     }
@@ -22,7 +22,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-    public function testInteger()
+    public function testInteger(): void
     {
         $this->assertSame(
             10,
@@ -33,7 +33,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-    public function testString()
+    public function testString(): void
     {
         $this->assertSame(
             '10',
@@ -44,7 +44,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process(null)
@@ -54,7 +54,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test false
      */
-    public function testFalse()
+    public function testFalse(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process(false)
@@ -64,7 +64,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test empty string
      */
-    public function testEmptyString()
+    public function testEmptyString(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process('')
@@ -74,7 +74,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string with 0
      */
-    public function testStringWithZero()
+    public function testStringWithZero(): void
     {
         $this->assertSame(
             '0',
@@ -85,7 +85,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test 0
      */
-    public function testZero()
+    public function testZero(): void
     {
         $this->assertSame(
             0,
@@ -96,7 +96,7 @@ class BlankTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-    public function testFloatZero()
+    public function testFloatZero(): void
     {
         $this->assertSame(
             0.0,

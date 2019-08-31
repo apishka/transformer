@@ -14,7 +14,7 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
      *
      * @return NotNull
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): NotNull
     {
         return new NotNull();
     }
@@ -22,7 +22,7 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-    public function testInteger()
+    public function testInteger(): void
     {
         $this->assertSame(
             10,
@@ -33,7 +33,7 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-    public function testString()
+    public function testString(): void
     {
         $this->assertSame(
             '10',
@@ -43,12 +43,12 @@ class NotNullTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test null
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage cannot be empty
      */
-    public function testNull()
+    public function testNull(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('cannot be empty');
+
         $this->prepareAssert()->process(null);
     }
 }

@@ -14,7 +14,7 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return BoolType
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): BoolType
     {
         return new BoolType();
     }
@@ -22,7 +22,7 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test valid data
      */
-    public function testValid()
+    public function testValid(): void
     {
         $this->assertSame(
             1,
@@ -53,10 +53,9 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->prepareAssert()->process(null)
         );
     }
@@ -65,12 +64,13 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareAssert();
         $assert->process($wrong_type);
     }
@@ -80,7 +80,7 @@ class BoolTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             [STDOUT],

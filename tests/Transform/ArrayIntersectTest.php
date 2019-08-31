@@ -12,19 +12,17 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @param array $options
-     *
      * @return ArrayIntersect
      */
-    protected function prepareAssert(array $options = [])
+    protected function prepareAssert(): ArrayIntersect
     {
-        return new ArrayIntersect($options);
+        return new ArrayIntersect();
     }
 
     /**
      * Test array
      */
-    public function testArray()
+    public function testArray(): void
     {
         $this->assertSame(
             [10],
@@ -35,10 +33,9 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->prepareAssert()->process(null)
         );
     }
@@ -47,14 +44,15 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      * Test wrong types
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      *
      * @param mixed $value
      * @param array $values
      */
-    public function testWrongValues($value, array $values)
+    public function testWrongValues($value, array $values): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareAssert();
         $assert->process($value, ['values' => $values]);
     }
@@ -64,7 +62,7 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             [[1], ['test']],
@@ -84,7 +82,7 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      * @param mixed $value
      * @param array $values
      */
-    public function testGoodValues($value, $values)
+    public function testGoodValues($value, $values): void
     {
         $assert = $this->prepareAssert();
         $this->assertEquals(
@@ -98,7 +96,7 @@ class ArrayIntersectTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function goodValuesProvider()
+    public function goodValuesProvider(): array
     {
         return [
             [[1], ['1']],

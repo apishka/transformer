@@ -14,7 +14,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
      *
      * @return Email
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): Email
     {
         return new Email();
     }
@@ -22,7 +22,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -31,30 +31,30 @@ class EmailTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong email format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong email format');
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong email format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong email format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test email
      */
-    public function testSimpleEmail()
+    public function testSimpleEmail(): void
     {
         $this->assertSame(
             'test@example.com',
@@ -70,7 +70,7 @@ class EmailTest extends \PHPUnit\Framework\TestCase
     /**
      * Test local email
      */
-    public function testLocalEmail()
+    public function testLocalEmail(): void
     {
         $this->assertSame(
             'test@example',
@@ -85,12 +85,12 @@ class EmailTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test invalid email
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong email format
      */
-    public function testInvalidEmail()
+    public function testInvalidEmail(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong email format');
+
         $this->prepareAssert()->process(
             'test@',
             [

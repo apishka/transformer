@@ -12,9 +12,9 @@ class UpperTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return Lower
+     * @return Upper
      */
-    protected function prepareSanitizer()
+    protected function prepareSanitizer(): Upper
     {
         return new Upper();
     }
@@ -32,7 +32,7 @@ class UpperTest extends \PHPUnit\Framework\TestCase
     /**
      * Test string
      */
-    public function testString()
+    public function testString(): void
     {
         $this->assertSame(
             '10',
@@ -54,12 +54,13 @@ class UpperTest extends \PHPUnit\Framework\TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareSanitizer();
         $assert->process($wrong_type);
     }
@@ -69,7 +70,7 @@ class UpperTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             [[]],

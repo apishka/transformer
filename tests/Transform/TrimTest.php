@@ -14,7 +14,7 @@ class TrimTest extends \PHPUnit\Framework\TestCase
      *
      * @return Trim
      */
-    protected function prepareSanitizer()
+    protected function prepareSanitizer(): Trim
     {
         return new Trim();
     }
@@ -22,7 +22,7 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer
      */
-    public function testInteger()
+    public function testInteger(): void
     {
         $this->assertSame(
             '10',
@@ -33,7 +33,7 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareSanitizer()->process(null)
@@ -42,30 +42,30 @@ class TrimTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareSanitizer()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareSanitizer()->process([1]);
     }
 
     /**
      * Test right trim
      */
-    public function testRightTrim()
+    public function testRightTrim(): void
     {
         $this->assertSame(
             'test',
@@ -76,7 +76,7 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test left trim
      */
-    public function testLeftTrim()
+    public function testLeftTrim(): void
     {
         $this->assertSame(
             'test',
@@ -87,7 +87,7 @@ class TrimTest extends \PHPUnit\Framework\TestCase
     /**
      * Test left trim
      */
-    public function testTrim()
+    public function testTrim(): void
     {
         $this->assertSame(
             'test',

@@ -2,7 +2,7 @@
 
 namespace ApishkaTest\Transformer\Transform;
 
-use Apishka\Transformer\Transform\Callback;
+use Apishka\Transformer\Transform;
 
 /**
  * Callback assert test
@@ -12,17 +12,17 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
     /**
      * Prepare assert
      *
-     * @return Callback
+     * @return Transform\Callback
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): Transform\Callback
     {
-        return new Callback();
+        return new Transform\Callback();
     }
 
     /**
      * Test integer
      */
-    public function testInteger()
+    public function testInteger(): void
     {
         $this->assertSame(
             10,
@@ -42,7 +42,7 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
     /**
      * Test integer array
      */
-    public function testIntegerArray()
+    public function testIntegerArray(): void
     {
         $this->assertSame(
             10,
@@ -68,23 +68,23 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test no callback
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Property "callback" not found in options
      */
-    public function testNoCallback()
+    public function testNoCallback(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Property "callback" not found in options');
+
         $this->prepareAssert()->process(10);
     }
 
     /**
      * Test bad callback
-     *
-     * @expectedException        \InvalidArgumentException
-     * @expectedExceptionMessage Callback is not function
      */
-    public function testBadCallback()
+    public function testBadCallback(): void
     {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Callback is not function');
+
         $this->prepareAssert()->process(
             10,
             [
@@ -95,12 +95,12 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test callback
-     *
-     * @expectedException        \Exception
-     * @expectedExceptionMessage wrong value
      */
-    public function testCallback()
+    public function testCallback(): void
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('wrong value');
+
         $this->prepareAssert()->process(
             9,
             [
@@ -115,12 +115,12 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test callback array
-     *
-     * @expectedException        \Exception
-     * @expectedExceptionMessage wrong value
      */
-    public function testCallbackArray()
+    public function testCallbackArray(): void
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('wrong value');
+
         $this->prepareAssert()->process(
             9,
             [
@@ -143,7 +143,7 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
     /**
      * Test returning
      */
-    public function testReturning()
+    public function testReturning(): void
     {
         $this->assertSame(
             20,
@@ -163,7 +163,7 @@ class CallbackTest extends \PHPUnit\Framework\TestCase
     /**
      * Test returning array
      */
-    public function testReturningArray()
+    public function testReturningArray(): void
     {
         $this->assertSame(
             30,

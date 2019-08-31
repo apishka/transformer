@@ -32,7 +32,7 @@ abstract class DateTimeTypeAbstract extends TransformAbstract
         );
 
         if ($value === null)
-            return;
+            return null;
 
         if (is_object($value) || is_resource($value) || is_array($value))
             $this->throwException($options, 'error');

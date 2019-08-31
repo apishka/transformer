@@ -14,7 +14,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return TimeType
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): TimeType
     {
         return new TimeType();
     }
@@ -25,7 +25,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
      * @dataProvider             providerTestGoodValues
      * @param mixed $value
      */
-    public function testGoodValues($value)
+    public function testGoodValues($value): void
     {
         $assert = $this->prepareAssert();
         $this->assertSame(
@@ -39,7 +39,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function providerTestGoodValues()
+    public function providerTestGoodValues(): array
     {
         return [
             ['10:00:00.123456'],
@@ -51,7 +51,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
         $this->assertNull(
             $this->prepareAssert()->process(null)
@@ -60,30 +60,30 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test object
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testObject()
+    public function testObject(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process(new \StdClass());
     }
 
     /**
      * Test array
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testArray()
+    public function testArray(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process([1]);
     }
 
     /**
      * Test allow
      */
-    public function testAllow()
+    public function testAllow(): void
     {
         $this->assertSame(
             'now',
@@ -98,33 +98,33 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad format date
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testBadFormatDate()
+    public function testBadFormatDate(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('10-20-30');
     }
 
     /**
      * Test not existent date
-     *
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      */
-    public function testNotExistentDate()
+    public function testNotExistentDate(): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $this->prepareAssert()->process('10:60:30');
     }
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \Exception
      */
-    public function testBadMinOption()
+    public function testBadMinOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '10:20:30',
             [
@@ -135,11 +135,11 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \Exception
      */
-    public function testWrongMinOption()
+    public function testWrongMinOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '10:20:30',
             [
@@ -151,7 +151,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test min correct
      */
-    public function testMinCorrect()
+    public function testMinCorrect(): void
     {
         $this->assertSame(
             '10:20:30',
@@ -166,12 +166,12 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test min less
-     *
-     * @expectedException        \Apishka\Transformer\FriendlyException
-     * @expectedExceptionMessage cannot be before 10:20:30
      */
-    public function testMinLess()
+    public function testMinLess(): void
     {
+        $this->expectException(\Apishka\Transformer\FriendlyException::class);
+        $this->expectExceptionMessage('cannot be before 10:20:30');
+
         $this->prepareAssert()->process(
             '10:20:00',
             [
@@ -182,11 +182,11 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad max option
-     *
-     * @expectedException        \Exception
      */
-    public function testBadMaxOption()
+    public function testBadMaxOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '10:20:30',
             [
@@ -197,11 +197,11 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test bad min option
-     *
-     * @expectedException        \Exception
      */
-    public function testWrongMaxOption()
+    public function testWrongMaxOption(): void
     {
+        $this->expectException(\Exception::class);
+
         $this->prepareAssert()->process(
             '10:20:30',
             [
@@ -213,7 +213,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test max correct
      */
-    public function testMaxCorrect()
+    public function testMaxCorrect(): void
     {
         $this->assertSame(
             '10:20:00',
@@ -229,7 +229,7 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test max correct with microtime
      */
-    public function testMaxCorrectWithMicrotime()
+    public function testMaxCorrectWithMicrotime(): void
     {
         $this->assertSame(
             '10:20:00.0001',
@@ -244,12 +244,12 @@ class TimeTypeTest extends \PHPUnit\Framework\TestCase
 
     /**
      * Test min more
-     *
-     * @expectedException        \Apishka\Transformer\FriendlyException
-     * @expectedExceptionMessage cannot be before 10:20:00
      */
-    public function testMinMore()
+    public function testMinMore(): void
     {
+        $this->expectException(\Apishka\Transformer\FriendlyException::class);
+        $this->expectExceptionMessage('cannot be before 10:20:00');
+
         $this->prepareAssert()->process(
             '10:20:30',
             [

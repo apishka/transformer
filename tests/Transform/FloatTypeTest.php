@@ -14,7 +14,7 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return FloatType
      */
-    protected function prepareAssert()
+    protected function prepareAssert(): FloatType
     {
         return new FloatType();
     }
@@ -22,7 +22,7 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test float
      */
-    public function testFloat()
+    public function testFloat(): void
     {
         $this->assertSame(
             7.4,
@@ -38,10 +38,9 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test null
      */
-    public function testNull()
+    public function testNull(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->prepareAssert()->process(null)
         );
     }
@@ -50,12 +49,13 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      * Test wrong values
      *
      * @dataProvider             wrongValuesProvider
-     * @expectedException        \Apishka\Transformer\Exception
-     * @expectedExceptionMessage wrong input format
      * @param mixed $wrong_type
      */
-    public function testWrongValues($wrong_type)
+    public function testWrongValues($wrong_type): void
     {
+        $this->expectException(\Apishka\Transformer\Exception::class);
+        $this->expectExceptionMessage('wrong input format');
+
         $assert = $this->prepareAssert();
         $assert->process($wrong_type);
     }
@@ -65,7 +65,7 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
      *
      * @return array
      */
-    public function wrongValuesProvider()
+    public function wrongValuesProvider(): array
     {
         return [
             ['test'],
@@ -77,7 +77,7 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test with filters
      */
-    public function testWithFilters()
+    public function testWithFilters(): void
     {
         $this->assertSame(
             1123123.123,
@@ -88,7 +88,7 @@ class FloatTypeTest extends \PHPUnit\Framework\TestCase
     /**
      * Test without filters
      */
-    public function testWithoutFilters()
+    public function testWithoutFilters(): void
     {
         $this->assertSame(
             1.0,
